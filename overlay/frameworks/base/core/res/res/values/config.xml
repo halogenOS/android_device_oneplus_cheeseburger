@@ -438,4 +438,7 @@
 
     <!-- Whether device has dash charging support -->
     <bool name="config_hasDashCharger">true</bool>
+
+    <!-- Enable NightLight -->
+    <bool name="config_nightDisplayAvailable">true</bool>
 </resources>
