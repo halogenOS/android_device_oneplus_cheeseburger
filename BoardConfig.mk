@@ -33,6 +33,10 @@ BOARD_VENDOR := oneplus
 # Assertions
 TARGET_OTA_ASSERT_DEVICE := OnePlus5,cheeseburger,oneplus5,op5,A5000,ONEPLUS A5000
 
+# Optimizations
+POLLY_OPTS := true
+LOCAL_CLANG_LTO := true
+
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
 
