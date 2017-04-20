@@ -3347,7 +3347,7 @@ void QCamera3HardwareInterface::handleMetadataWithLock(
                     i->timestamp, i->request_id, i->jpegMetadata, i->pipeline_depth,
                     i->capture_intent, internalPproc, i->fwkCacMode,
                     firstMetadataInBatch);
-            restoreHdrScene(i->scene_mode, result.result);
+            result.result = restoreHdrScene(i->scene_mode, result.result);
 
             if (i->blob_request) {
                 {
@@ -3459,10 +3459,10 @@ done_metadata:
  *
  * PARAMETERS : @result: Metadata to be reported in capture result
  *
- * RETURN     : None
+ * RETURN     : camera_metadata_t*
  *
  *==========================================================================*/
-void QCamera3HardwareInterface::restoreHdrScene(
+camera_metadata_t* QCamera3HardwareInterface::restoreHdrScene(
         uint8_t sceneMode, const camera_metadata_t *result)
 {
     CameraMetadata resultWrapper;
@@ -3475,7 +3475,7 @@ void QCamera3HardwareInterface::restoreHdrScene(
         resultWrapper.update(ANDROID_CONTROL_SCENE_MODE, &sceneMode, 1);
     }
 
-    resultWrapper.release();
+    return resultWrapper.release();
 }
 
 /*===========================================================================
@@ -3491,8 +3491,8 @@ void QCamera3HardwareInterface::restoreHdrScene(
 void QCamera3HardwareInterface::hdrPlusPerfLock(
         mm_camera_super_buf_t *metadata_buf)
 {
-    if (NULL == metadata_buf) {
-        LOGE("metadata_buf is NULL");
+    if ((NULL == metadata_buf) || (ERROR == mState)) {
+        LOGE("metadata_buf is NULL or return when mState is error");
         return;
     }
     metadata_buffer_t *metadata =
@@ -4234,6 +4234,22 @@ int QCamera3HardwareInterface::processCaptureRequest(
         property_get("persist.camera.is_type_preview", is_type_value, "4");
         isTypePreview = static_cast<cam_is_type_t>(atoi(is_type_value));
         LOGD("isTypeVideo: %d isTypePreview: %d", isTypeVideo, isTypePreview);
+
+        int32_t vfe1_reserved_rdi = -1;
+        if (meta.exists(QCAMERA3_SIMULTANEOUS_CAMERA_VFE1_RESERVED_RDI)) {
+            vfe1_reserved_rdi =
+                meta.find(QCAMERA3_SIMULTANEOUS_CAMERA_VFE1_RESERVED_RDI).data.i32[0];
+        } else {
+            char value[PROPERTY_VALUE_MAX];
+            property_get("persist.camera.vfe1.reservedrdi", value, "-1");
+            vfe1_reserved_rdi = atoi(value);
+        }
+        if (vfe1_reserved_rdi < -1 && vfe1_reserved_rdi > 3)
+            vfe1_reserved_rdi = -1;
+        ADD_SET_PARAM_ENTRY_TO_BATCH(mParameters,
+                CAM_INTF_PARM_VFE1_RESERVED_RDI, vfe1_reserved_rdi);
+        rc = mCameraHandle->ops->set_parms(mCameraHandle->camera_handle,
+                mParameters);
 
         if (meta.exists(ANDROID_CONTROL_CAPTURE_INTENT)) {
             int32_t hal_version = CAM_HAL_V3;
@@ -5595,8 +5611,8 @@ void QCamera3HardwareInterface::captureResultCb(mm_camera_super_buf_t *metadata_
             handleBatchMetadata(metadata_buf,
                     true /* free_and_bufdone_meta_buf */);
         } else { /* mBatchSize = 0 */
-            hdrPlusPerfLock(metadata_buf);
             pthread_mutex_lock(&mMutex);
+            hdrPlusPerfLock(metadata_buf);
             handleMetadataWithLock(metadata_buf,
                     true /* free_and_bufdone_meta_buf */,
                     false /* first frame of batch metadata */ ,

@@ -347,6 +347,9 @@ private:
     static const char KEY_QC_BOKEH_MPO_MODE[];
     static const char KEY_QC_BOKEH_PICTURE_SIZE[];
 
+    // Simultaneous camera restriction
+    static const char KEY_QC_VFE1_RESERVED_RDI[];
+
     // Values for Touch AF/AEC
     static const char TOUCH_AF_AEC_OFF[];
     static const char TOUCH_AF_AEC_ON[];
@@ -517,6 +520,9 @@ private:
     static const char KEY_QC_SECURE_MODE[];
     static const char KEY_QC_SECURE_MODE_UBWC[];
     static const char KEY_QC_SECURE_QUEUE_DEPTH[];
+    static const char KEY_QC_SECURE_MODE_AEC_MODE[];
+    static const char KEY_QC_SECURE_MODE_EXPOSURE_TIME[];
+    static const char KEY_QC_SECURE_MODE_SENSITIVITY[];
     static const char KEY_QC_SUPPORTED_SECURE_MODES[];
 
     // Values for SKIN TONE ENHANCEMENT
@@ -1013,6 +1019,7 @@ private:
     int32_t setRetroActiveBurstNum(const QCameraParameters& params);
     int32_t setBurstLEDOnPeriod(const QCameraParameters& params);
     int32_t setSnapshotFDReq(const QCameraParameters& );
+    int32_t setVfe1ReservedRdi(const QCameraParameters& params);
     int32_t setStatsDebugMask();
     int32_t setPAAF();
     int32_t setTintlessValue(const QCameraParameters& params);
@@ -1023,6 +1030,9 @@ private:
     int32_t setMobicat(const QCameraParameters& params);
     int32_t setRdiMode(const QCameraParameters& );
     int32_t setSecureMode(const QCameraParameters& );
+    int32_t setSecureModeAecMode(const QCameraParameters& );
+    int32_t setSecureModeSensitivity(const QCameraParameters& );
+    int32_t setSecureModeExposureTime(const QCameraParameters& );
     int32_t setCacheVideoBuffers(const QCameraParameters& params);
     int32_t setCustomParams(const QCameraParameters& params);
     int32_t setBokehMode(const QCameraParameters& params);
@@ -1086,6 +1096,7 @@ private:
     int32_t setEztune();
     void setLowLightCapture();
     int setRecordingHintValue(int32_t value); // set local copy of video hint and send to server
+    int32_t setVfe1ReservedRdi(const char *str);
                                               // no change in parameters value
     int32_t updateFlash(bool commitSettings);
     int32_t setRawSize(cam_dimension_t &dim);
