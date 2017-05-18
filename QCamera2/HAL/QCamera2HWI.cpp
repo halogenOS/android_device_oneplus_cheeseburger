@@ -390,7 +390,6 @@ int QCamera2HardwareInterface::start_preview(struct camera_device *device)
         ret = apiResult.status;
     }
     hw->unlockAPI();
-    hw->m_bPreviewStarted = true;
     LOGI("[KPI Perf]: X ret = %d", ret);
     return ret;
 }
@@ -1942,11 +1941,9 @@ int QCamera2HardwareInterface::openCamera()
             goto error_exit2;
         }
 
-        if (mCameraHandle != NULL) {
-            mCameraHandle->ops->register_event_notify(mCameraHandle->camera_handle,
-                    camEvtHandle,
-                    (void *) this);
-        }
+        mCameraHandle->ops->register_event_notify(mCameraHandle->camera_handle,
+                camEvtHandle,
+                (void *) this);
     } else {
         LOGH("Capabilities not inited, initializing now.");
 
@@ -1963,11 +1960,9 @@ int QCamera2HardwareInterface::openCamera()
             goto error_exit3;
         }
 
-        if (mCameraHandle != NULL) {
-            mCameraHandle->ops->register_event_notify(mCameraHandle->camera_handle,
-                    camEvtHandle,
-                    (void *) this);
-        }
+        mCameraHandle->ops->register_event_notify(mCameraHandle->camera_handle,
+                camEvtHandle,
+                (void *) this);
     }
     mBundledSnapshot = 0;
     mActiveCameras = MM_CAMERA_TYPE_MAIN;
@@ -2053,10 +2048,8 @@ error_exit3:
     if(mJpegClientHandle) {
         deinitJpegHandle();
     }
-    if (mCameraHandle != NULL) {
-        mCameraHandle->ops->close_camera(mCameraHandle->camera_handle);
-        mCameraHandle = NULL;
-    }
+    mCameraHandle->ops->close_camera(mCameraHandle->camera_handle);
+    mCameraHandle = NULL;
 error_exit2:
     waitDeferredWork(mMetadataAllocJob);
 error_exit1:
@@ -4004,7 +3997,7 @@ int QCamera2HardwareInterface::startPreview()
             return rc;
         }
     }
-
+    m_bPreviewStarted = true;
     LOGI("X rc = %d", rc);
     return rc;
 }
