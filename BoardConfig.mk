@@ -3,8 +3,26 @@
 # Product-specific compile-time definitions.
 #
 
+# Inherit from OPPO common
+-include device/oppo/common/BoardConfigCommon.mk
+
+TARGET_OTA_ASSERT_DEVICE := OnePlus5,oneplus5,op5,A5001,A5003,A5005
+
+PLATFORM_PATH := device/oneplus/oneplus5
+
+# Optimizations
+POLLY_OPTS := true
+LOCAL_CLANG_LTO := true
+TARGET_MORE_OPTIMIZATION := true
+
+# Use Snapdragon LLVM, if available
+TARGET_USE_SDCLANG := true
+
+BOARD_VENDOR := oneplus
+BOARD_USES_QCOM_HARDWARE := true
+
 TARGET_BOARD_PLATFORM := msm8998
-TARGET_BOOTLOADER_BOARD_NAME := msm8998
+TARGET_BOOTLOADER_BOARD_NAME := MSM8998
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -22,13 +40,14 @@ TARGET_2ND_CPU_VARIANT := cortex-a9
 SDCLANG := true
 
 TARGET_NO_BOOTLOADER := false
-TARGET_USES_UEFI := true
+#TARGET_USES_UEFI := true
 TARGET_NO_KERNEL := false
 
 -include $(QCPATH)/common/msm8998/BoardConfigVendor.mk
 
 # Some framework code requires this to enable BT
 BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_USES_WIPOWER := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/qcom/common
 
@@ -38,48 +57,59 @@ BOARD_USE_LEGACY_UI := true
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x04000000
 
-#A/B related defines
-AB_OTA_UPDATER := true
-# Full A/B partiton update set
-#   AB_OTA_PARTITIONS := xbl rpm tz hyp pmic modem abl boot keymaster cmnlib cmnlib64 system bluetooth
-# Subset A/B partitions for Android-only image update
-AB_OTA_PARTITIONS ?= boot system
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 TARGET_NO_RECOVERY := true
-BOARD_USES_RECOVERY_AS_BOOT := true
 
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3221225472
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 10737418240
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
 BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
+
+HWUI_COMPILE_FOR_PERF := true
 
 TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
 TARGET_USES_QCOM_BSP := true
 TARGET_USES_COLOR_METADATA := true
 
-ifeq ($(BOARD_KERNEL_CMDLINE),)
-ifeq ($(TARGET_KERNEL_VERSION),4.4)
-     BOARD_KERNEL_CMDLINE += console=ttyMSM0,115200,n8 androidboot.console=ttyMSM0 earlycon=msm_serial_dm,0xc1b0000
-else
-     BOARD_KERNEL_CMDLINE += console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 earlycon=msm_hsl_uart,0xc1b0000
-endif
-BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
-endif
+BOARD_KERNEL_CMDLINE := \
+        androidboot.hardware=qcom \
+        ehci-hcd.park=3 \
+        lpm_levels.sleep_disabled=1 \
+        sched_enable_hmp=1 \
+        sched_enable_power_aware=1 \
+        service_locator.enable=1 \
+        swiotlb=2048 \
+        androidboot.configfs=true \
+        androidboot.usbcontroller=a800000.dwc3
 
-BOARD_SECCOMP_POLICY := device/qcom/$(TARGET_BOARD_PLATFORM)/seccomp
-
-BOARD_EGL_CFG := device/qcom/$(TARGET_BOARD_PLATFORM)/egl.cfg
+BOARD_EGL_CFG := $(PLATFORM_PATH)/egl.cfg
 
 BOARD_KERNEL_BASE        := 0x00000000
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
+BOARD_KERNEL_IMAGE_NAME  := Image.gz-dtb
 BOARD_RAMDISK_OFFSET     := 0x02000000
-
+TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
+TARGET_KERNEL_CONFIG := oneplus5_defconfig
+TARGET_FRESHLY_COMPILED_DTBTOOL := true
+TARGET_KERNEL_BUILD_VARIANT := user
+
+# Link Toolchain
+TARGET_GCC_VERSION := 4.9
+TARGET_GCC_VERSION_EXP := 4.9
+TARGET_GCC_VERSION_EXP_ARM64 := $(TARGET_GCC_VERSION)
+TARGET_GCC_VERSION_ARM64 := 4.9
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+TARGET_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+KERNEL_TOOLCHAIN := $(realpath $(TOP))/prebuilts/gcc/$(strip $(HOST_OS))-x86/aarch64/$(TARGET_CROSS_COMPILE_PREFIX)$(TARGET_GCC_VERSION_ARM64)/bin
+TARGET_TOOLCHAIN_ROOT := prebuilts/gcc/$(strip $(HOST_OS))-x86/aarch64/$(TARGET_CROSS_COMPILE_PREFIX)$(TARGET_GCC_VERSION_EXP_ARM64)
+TARGET_TOOLS_PREFIX := $(TARGET_TOOLCHAIN_ROOT)/bin/$(TARGET_CROSS_COMPILE_PREFIX)
 TARGET_USES_UNCOMPRESSED_KERNEL := false
 
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
@@ -91,14 +121,23 @@ MAX_VIRTUAL_DISPLAY_DIMENSION := 4096
 VSYNC_EVENT_PHASE_OFFSET_NS := 0
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 0
 
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno540
+HAVE_ADRENO_SOURCE := false
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+
 BOARD_USES_GENERIC_AUDIO := true
 BOARD_QTI_CAMERA_32BIT_ONLY := true
 TARGET_NO_RPC := true
+
+USE_OPENGL_RENDERER := true
 
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 TARGET_INIT_VENDOR_LIB := libinit_msm
 
 TARGET_INIT_COLDBOOT_TIMEOUT := 8
+
+TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_KERNEL_APPEND_DTB := true
@@ -107,25 +146,12 @@ TARGET_COMPILE_WITH_MSM_KERNEL := true
 #Enable HW based full disk encryption
 TARGET_HW_DISK_ENCRYPTION := false
 
-#Enable PD locater/notifier
-TARGET_PD_SERVICE_ENABLED := true
-
-#Enable HW based full disk encryption
-TARGET_HW_DISK_ENCRYPTION := true
-
 TARGET_CRYPTFS_HW_PATH := device/qcom/common/cryptfs_hw
 
-# Enable dex pre-opt to speed up initial boot
-ifeq ($(HOST_OS),linux)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-      WITH_DEXPREOPT_PIC := true
-      ifneq ($(TARGET_BUILD_VARIANT),user)
-        # Retain classes.dex in APK's for non-user builds
-        DEX_PREOPT_DEFAULT := nostripping
-      endif
-    endif
-endif
+TARGET_FORCE_DEXPREOPT ?= false
+WITH_DEXPREOPT := $(TARGET_FORCE_DEXPREOPT)
+
+TARGET_RIL_VARIANT := caf
 
 #Enable peripheral manager
 TARGET_PER_MGR_ENABLED := true
@@ -136,19 +162,32 @@ TARGET_USES_SSC := true
 # Enable sensor multi HAL
 USE_SENSOR_MULTI_HAL := true
 
-#Add NON-HLOS files for ota upgrade
-ADD_RADIO_FILES := true
-TARGET_RECOVERY_UI_LIB := librecovery_ui_msm
-
 #Enable CPUSets
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
+
+# Audio
+AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
+AUDIO_FEATURE_ENABLED_COMPRESS_CAPTURE := true
+AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := true
+AUDIO_FEATURE_ENABLED_DS2_DOLBY_DAP := true
+AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
+AUDIO_FEATURE_ENABLED_FLUENCE := true
+AUDIO_FEATURE_ENABLED_HFP := true
+AUDIO_FEATURE_ENABLED_INCALL_MUSIC := false
+AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := false
+AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
+AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
+AUDIO_FEATURE_ENABLED_PCM_OFFLOAD := true
+AUDIO_FEATURE_ENABLED_PCM_OFFLOAD_24 := true
+AUDIO_FEATURE_ENABLED_CUSTOMSTEREO := true
+AUDIO_FEATURE_ENABLED_MULTIPLE_TUNNEL := true
+
+AUDIO_FINE_TUNED_OPTIMIZATIONS := true
 
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
 
 #Enabling IMS Feature
 TARGET_USES_IMS := true
 
-ifneq ($(AB_OTA_UPDATER),true)
-    TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_msm
-endif
+-include vendor/oneplus/oneplus5/BoardConfigVendor.mk
