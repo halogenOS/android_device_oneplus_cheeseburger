@@ -18,9 +18,9 @@ TARGET_USE_UI_SVA := true
 
 # Video codec configuration files
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
-PRODUCT_COPY_FILES += $(PLATFORM_PATH)/media_profiles.xml:system/etc/media_profiles.xml \
-                      $(PLATFORM_PATH)/media_codecs.xml:system/etc/media_codecs.xml \
-                      $(PLATFORM_PATH)/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
+PRODUCT_COPY_FILES += $(PLATFORM_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
+                      $(PLATFORM_PATH)/media/media_codecs.xml:system/etc/media_codecs.xml \
+                      $(PLATFORM_PATH)/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 PRODUCT_COPY_FILES += $(PLATFORM_PATH)/whitelistedapps.xml:system/vendor/etc/whitelistedapps.xml
