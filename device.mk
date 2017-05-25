@@ -89,11 +89,12 @@ PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/rootdir/bin/init.qti.qseecomd.sh:system/bin/init.qti.qseecomd.sh
 
 # MSM IRQ Balancer configuration file
-PRODUCT_COPY_FILES += $(PLATFORM_PATH)/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
+PRODUCT_COPY_FILES += \
+    $(PLATFORM_PATH)/configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
 
 # Powerhint configuration file
 PRODUCT_COPY_FILES += \
-    $(PLATFORM_PATH)/powerhint_soc_id_292.xml:system/etc/powerhint_soc_id_292.xml
+    $(PLATFORM_PATH)/rootdir/etc/powerhint_soc_id_292.xml:system/etc/powerhint_soc_id_292.xml
 
 #for android_filesystem_config.h
 PRODUCT_PACKAGES += \
