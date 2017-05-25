@@ -1,10 +1,18 @@
-# 
+#
 # Copyright (C) 2017 The Linux Foundation
 # Copyright (C) 2017 The halogenOS Project
 #
-# config.mk
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
-# Product-specific compile-time definitions.
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 #
 
 # Inherit from OPPO common
@@ -87,6 +95,7 @@ TARGET_FRESHLY_COMPILED_DTBTOOL := true
 TARGET_KERNEL_BUILD_VARIANT := user
 TARGET_KERNEL_APPEND_DTB := true
 TARGET_COMPILE_WITH_MSM_KERNEL := true
+TARGET_KERNEL_VERSION := 4.4
 
 # Images
 TARGET_NO_RECOVERY := true
@@ -99,6 +108,9 @@ TARGET_USERIMAGES_USE_F2FS := true
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x04000000
+BOARD_FRP_PARTITION_NAME := frp
+PRODUCT_SUPPORTS_VERITY := true
+PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/bootdevice/by-name/system
 
 # Graphics
 USE_OPENGL_RENDERER := true
@@ -129,6 +141,9 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
+# List of AAPT configurations
+PRODUCT_AAPT_CONFIG += xlarge large
+
 # Audio
 BOARD_USES_GENERIC_AUDIO := true
 BOARD_QTI_CAMERA_32BIT_ONLY := true
@@ -152,6 +167,10 @@ AUDIO_FEATURE_ENABLED_MULTIPLE_TUNNEL := true
 
 AUDIO_FINE_TUNED_OPTIMIZATIONS := true
 
+# Media
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+TARGET_USES_MEDIA_EXTENSIONS := true
+
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 TARGET_INIT_VENDOR_LIB := libinit_oneplus5
@@ -174,12 +193,24 @@ TARGET_PER_MGR_ENABLED := true
 TARGET_USES_SSC := true
 USE_SENSOR_MULTI_HAL := true
 
-#Enable CPUSets
+# Enable CPUSets
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
 # Charger
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
+
+# NFC
+TARGET_USES_NQ_NFC := true
+NQ3XX_PRESENT := true
+
+# WLAN
+WLAN_CHIPSET := qca_cld3
+
+# Misc
+DEVICE_PACKAGE_OVERLAYS := $(PLATFORM_PATH)/overlay
+
+BOARD_HAVE_QCOM_FM := true
 
 # Enabling IMS Feature
 TARGET_USES_IMS := true
