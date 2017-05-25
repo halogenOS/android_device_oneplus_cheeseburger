@@ -19,8 +19,7 @@ PLATFORM_PATH := device/oneplus/oneplus5
 
 PRODUCT_COPY_FILES += $(PLATFORM_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
                       $(PLATFORM_PATH)/media/media_codecs.xml:system/etc/media_codecs.xml \
-                      $(PLATFORM_PATH)/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-                      $(PLATFORM_PATH)/whitelistedapps.xml:system/vendor/etc/whitelistedapps.xml
+                      $(PLATFORM_PATH)/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml
 
 # Override heap growth limit due to high display density on device
 PRODUCT_PROPERTY_OVERRIDES += \
