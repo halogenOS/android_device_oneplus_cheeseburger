@@ -1424,7 +1424,7 @@
         <ImageDecoding memCap="20000000" />
 
     </CamcorderProfiles>
-	
+
     <EncoderOutputFileFormat name="3gp" />
     <EncoderOutputFileFormat name="mp4" />
 

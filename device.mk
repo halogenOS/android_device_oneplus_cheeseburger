@@ -36,8 +36,8 @@ PRODUCT_BOOT_JARS += \
         telephony-ext
 
 PRODUCT_PACKAGES += \
-		telephony-ext \
-		libqmiextservices
+        telephony-ext \
+        libqmiextservices
 
 ifeq ($(strip $(BOARD_HAVE_QCOM_FM)),true)
 PRODUCT_BOOT_JARS += qcom.fmradio
@@ -101,16 +101,16 @@ PRODUCT_PACKAGES += \
 
 #A/B related packages
 PRODUCT_PACKAGES += \
-		    bootctrl.msm8998 \
-		    brillo_update_payload
+            bootctrl.msm8998 \
+            brillo_update_payload
 
 #FEATURE_OPENGLES_EXTENSION_PACK support string config file
 PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
+    frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
 
 # Init
 PRODUCT_PACKAGES += \
-	libinit_oneplus5 \
+    libinit_oneplus5 \
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -128,8 +128,8 @@ PRODUCT_PACKAGES += \
 
 # Buttons & Gestures
 PRODUCT_BUTTON_GESTURES_PACKAGES := \
-	oppo-keyhandler \
-	ConfigPanel
+    oppo-keyhandler \
+    ConfigPanel
 
 PRODUCT_PACKAGES += $(PRODUCT_BUTTON_GESTURES_PACKAGES)
 
@@ -148,7 +148,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     copybit.msm8998 \
     gralloc.msm8998 \
-	gps.msm8998 \
+    gps.msm8998 \
     hwcomposer.msm8998 \
     lights.msm8998 \
     memtrack.msm8998 \
