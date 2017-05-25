@@ -107,3 +107,51 @@ PRODUCT_PACKAGES += \
 #FEATURE_OPENGLES_EXTENSION_PACK support string config file
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
+
+# Init
+PRODUCT_PACKAGES += \
+	libinit_oneplus5 \
+
+# Audio
+PRODUCT_PACKAGES += \
+    audiod \
+    audio.a2dp.default \
+    audio.primary.msm8998 \
+    audio.r_submix.default \
+    audio.usb.default \
+    audio_policy.msm8998 \
+    libaudio-resampler \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    tinymix
+
+# Buttons & Gestures
+PRODUCT_BUTTON_GESTURES_PACKAGES := \
+	oppo-keyhandler \
+	ConfigPanel
+
+PRODUCT_PACKAGES += $(PRODUCT_BUTTON_GESTURES_PACKAGES)
+
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm8998 \
+    mm-qcamera-app \
+    libmm-qcamera \
+    sensors.hal.tof
+
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images
+
+# HALs
+PRODUCT_PACKAGES += \
+    copybit.msm8998 \
+    gralloc.msm8998 \
+	gps.msm8998 \
+    hwcomposer.msm8998 \
+    lights.msm8998 \
+    memtrack.msm8998 \
+    power.msm8998 \
+    vr.msm8998
+    
