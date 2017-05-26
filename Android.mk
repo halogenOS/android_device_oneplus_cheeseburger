@@ -1,3 +1,5 @@
+ifeq ($(TARGET_DEVICE),oneplus5)
+
 LOCAL_PATH := $(call my-dir)
 
 #----------------------------------------------------------------------
@@ -92,3 +94,4 @@ $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini)
 $(shell  mkdir -p $(TARGET_OUT_VENDOR)/firmware; \
 	ln -sf /dev/block/bootdevice/by-name/msadp \
 	$(TARGET_OUT_VENDOR)/firmware/msadp)
+endif
