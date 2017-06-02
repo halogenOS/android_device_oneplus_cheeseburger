@@ -209,6 +209,14 @@ WLAN_CHIPSET := qca_cld3
 
 BOARD_HAVE_QCOM_FM := true
 
+# SELinux
+include device/qcom/sepolicy/sepolicy.mk
+
+BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+
+# Include path
+TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
+
 # Enabling IMS Feature
 TARGET_USES_IMS := true
 
