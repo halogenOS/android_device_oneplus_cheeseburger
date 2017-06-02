@@ -207,9 +207,6 @@ NQ3XX_PRESENT := true
 # WLAN
 WLAN_CHIPSET := qca_cld3
 
-# Misc
-DEVICE_PACKAGE_OVERLAYS := $(PLATFORM_PATH)/overlay
-
 BOARD_HAVE_QCOM_FM := true
 
 # Enabling IMS Feature

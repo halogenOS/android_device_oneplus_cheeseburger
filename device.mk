@@ -15,6 +15,8 @@
 # limitations under the License.
 #
 
+$(call inherit-product-if-exists, vendor/oneplus/oneplus5/oneplus5-vendor.mk)
+
 PLATFORM_PATH := device/oneplus/oneplus5
 
 PRODUCT_COPY_FILES += $(PLATFORM_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
@@ -25,8 +27,17 @@ PRODUCT_COPY_FILES += $(PLATFORM_PATH)/media/media_profiles.xml:system/etc/media
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=256m
 
+DEVICE_PACKAGE_OVERLAYS := $(PLATFORM_PATH)/overlay
+
+# Device uses high-density artwork where available
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 2560
+TARGET_SCREEN_WIDTH := 1440
+
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-4096-dalvik-heap.mk)
-$(call inherit-product, device/oppo/common/common.mk)
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
@@ -155,4 +166,5 @@ PRODUCT_PACKAGES += \
     memtrack.msm8998 \
     power.msm8998 \
     vr.msm8998
-    
+
+$(call inherit-product, device/oppo/common/common.mk)
