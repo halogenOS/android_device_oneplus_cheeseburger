@@ -26,7 +26,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=256m
 
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-4096-dalvik-heap.mk)
-$(call inherit-product, device/qcom/common/common.mk)
+$(call inherit-product, device/oppo/common/common.mk)
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
