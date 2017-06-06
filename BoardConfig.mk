@@ -198,7 +198,7 @@ ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
 # Charger
-BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
+#BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
 
 # NFC
 TARGET_USES_NQ_NFC := true
