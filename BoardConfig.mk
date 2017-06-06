@@ -29,7 +29,6 @@ TARGET_MORE_OPTIMIZATION := true
 
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
-SDCLANG := true
 
 BOARD_VENDOR := oneplus
 BOARD_USES_QCOM_HARDWARE := true
