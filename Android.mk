@@ -2,6 +2,8 @@ ifeq ($(TARGET_DEVICE),oneplus5)
 
 LOCAL_PATH := $(call my-dir)
 
+include $(call all-subdir-makefiles,$(LOCAL_PATH))
+
 #----------------------------------------------------------------------
 # Copy additional target-specific files
 #----------------------------------------------------------------------
