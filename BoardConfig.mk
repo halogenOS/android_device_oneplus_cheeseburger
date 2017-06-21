@@ -74,7 +74,6 @@ TARGET_USES_UNCOMPRESSED_KERNEL := false
 BOARD_KERNEL_CMDLINE := \
         androidboot.hardware=qcom \
         ehci-hcd.park=3 \
-        lpm_levels.sleep_disabled=1 \
         sched_enable_hmp=1 \
         sched_enable_power_aware=1 \
         service_locator.enable=1 \
