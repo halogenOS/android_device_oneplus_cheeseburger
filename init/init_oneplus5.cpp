@@ -41,7 +41,7 @@ void init_variant_properties() {
     rf_version = property_get("ro.boot.rf_v1");
 
     // OP5 is a world phone
-    property_set("ro.product.model", "ONE A5000");
+    property_set("ro.product.model", "ONEPLUS A5000");
 }
 
 void vendor_load_properties() {
