@@ -18,9 +18,9 @@
 # Inherit from OPPO common
 -include device/oppo/common/BoardConfigCommon.mk
 
-TARGET_OTA_ASSERT_DEVICE := OnePlus5,oneplus5,op5,A5000
+TARGET_OTA_ASSERT_DEVICE := OnePlus5,cheeseburger,oneplus5,op5,A5000
 
-PLATFORM_PATH := device/oneplus/oneplus5
+PLATFORM_PATH := device/oneplus/cheeseburger
 
 # Optimizations
 POLLY_OPTS := true
@@ -90,7 +90,7 @@ TARGET_KERNEL_APPEND_DTB := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
-TARGET_KERNEL_CONFIG := oneplus5_defconfig
+TARGET_KERNEL_CONFIG := cheeseburger_defconfig
 TARGET_FRESHLY_COMPILED_DTBTOOL := true
 TARGET_KERNEL_BUILD_VARIANT := user
 TARGET_KERNEL_APPEND_DTB := true
@@ -174,7 +174,7 @@ TARGET_USES_MEDIA_EXTENSIONS := true
 
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
-TARGET_INIT_VENDOR_LIB := libinit_oneplus5
+TARGET_INIT_VENDOR_LIB := libinit_cheeseburger
 TARGET_INIT_COLDBOOT_TIMEOUT := 8
 
 # HW encryption
@@ -221,4 +221,4 @@ TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
 # Enabling IMS Feature
 TARGET_USES_IMS := true
 
--include vendor/oneplus/oneplus5/BoardConfigVendor.mk
+-include vendor/oneplus/cheeseburger/BoardConfigVendor.mk

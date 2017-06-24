@@ -5,8 +5,8 @@
     "branch":       "XOS-7.1"
   },
   {
-    "repository": "android_vendor_oneplus_oneplus5",
-    "target_path": "vendor/oneplus/oneplus5",
+    "repository": "android_vendor_oneplus_cheeseburger",
+    "target_path": "vendor/oneplus/cheeseburger",
     "branch":       "XOS-7.1"
   },
   {

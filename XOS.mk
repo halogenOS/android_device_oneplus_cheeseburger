@@ -17,14 +17,14 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit from oneplus5 device
-$(call inherit-product, device/oneplus/oneplus5/device.mk)
+# Inherit from cheeseburger device
+$(call inherit-product, device/oneplus/cheeseburger/device.mk)
 
 # Inherit some common XOS stuff
 $(call inherit-product, vendor/xos/config/common.mk)
 
-PRODUCT_NAME := XOS_oneplus5
-PRODUCT_DEVICE := oneplus5
+PRODUCT_NAME := XOS_cheeseburger
+PRODUCT_DEVICE := cheeseburger
 PRODUCT_MANUFACTURER := OnePlus
 PRODUCT_BRAND := OnePlus
 

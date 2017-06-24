@@ -1,4 +1,4 @@
-ifeq ($(TARGET_DEVICE),oneplus5)
+ifeq ($(TARGET_DEVICE),cheeseburger)
 
 LOCAL_PATH := $(call my-dir)
 

@@ -1,2 +1,2 @@
-add_lunch_combo XOS_oneplus5-userdebug
-add_lunch_combo XOS_oneplus5-eng
+add_lunch_combo XOS_cheeseburger-userdebug
+add_lunch_combo XOS_cheeseburger-eng

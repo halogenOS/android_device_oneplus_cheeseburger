@@ -15,9 +15,9 @@
 # limitations under the License.
 #
 
-$(call inherit-product-if-exists, vendor/oneplus/oneplus5/oneplus5-vendor.mk)
+$(call inherit-product-if-exists, vendor/oneplus/cheeseburger/cheeseburger-vendor.mk)
 
-PLATFORM_PATH := device/oneplus/oneplus5
+PLATFORM_PATH := device/oneplus/cheeseburger
 
 PRODUCT_COPY_FILES += $(PLATFORM_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
                       $(PLATFORM_PATH)/media/media_codecs.xml:system/etc/media_codecs.xml \
@@ -137,7 +137,7 @@ PRODUCT_COPY_FILES += \
 
 # Init
 PRODUCT_PACKAGES += \
-    libinit_oneplus5 \
+    libinit_cheeseburger \
 
 # Audio
 PRODUCT_PACKAGES += \
