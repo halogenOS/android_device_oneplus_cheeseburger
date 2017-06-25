@@ -97,3 +97,4 @@ $(shell  mkdir -p $(TARGET_OUT_VENDOR)/firmware; \
 	ln -sf /dev/block/bootdevice/by-name/msadp \
 	$(TARGET_OUT_VENDOR)/firmware/msadp)
 endif
+endif
