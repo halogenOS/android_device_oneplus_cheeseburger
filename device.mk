@@ -139,8 +139,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libinit_cheeseburger \
 
-PRODUCT_PACKAGES += \
-    fstab.qcom
+PRODUCT_COPY_FILES += \
+	$(PLATFORM_PATH)/rootdir/etc/fstab.qcom:$(TARGET_OUT_ROOT)/etc/fstab.qcom
 
 # Audio
 PRODUCT_PACKAGES += \
