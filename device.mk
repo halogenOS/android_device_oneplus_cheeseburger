@@ -139,6 +139,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libinit_cheeseburger \
 
+PRODUCT_PACKAGES += \
+    fstab.qcom
+
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
