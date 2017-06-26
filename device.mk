@@ -127,6 +127,14 @@ PRODUCT_COPY_FILES += \
 	$(foreach _,$(shell find $(PLATFORM_PATH)/rootdir/ -type f),\
 		$_:$(subst $(PLATFORM_PATH),$_,))
 
+# Some files from Android.mk
+PRODUCT_PACKAGES += \
+	gpio-keys.kl \
+	hostapd_default.conf \
+	hostapd.accept \
+	hostapd.deny \
+	wifi_concurrency_cfg.txt
+
 #for android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
