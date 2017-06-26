@@ -126,14 +126,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
     $(LOCAL_PATH)/keylayout/synaptics_rmi4_i2c.kl:system/usr/keylayout/synaptics_rmi4_i2c.kl
 
-# Some files from Android.mk
-PRODUCT_PACKAGES += \
-	gpio-keys.kl \
-	hostapd_default.conf \
-	hostapd.accept \
-	hostapd.deny \
-	wifi_concurrency_cfg.txt
-
 #for android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
