@@ -18,7 +18,7 @@
 # Inherit from OPPO common
 -include device/oppo/common/BoardConfigCommon.mk
 
-TARGET_OTA_ASSERT_DEVICE := OnePlus5,cheeseburger,oneplus5,op5,A5000
+TARGET_OTA_ASSERT_DEVICE := OnePlus5,cheeseburger,oneplus5,op5,A5000,ONEPLUS A5000
 
 PLATFORM_PATH := device/oneplus/cheeseburger
 
