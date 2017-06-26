@@ -36,10 +36,6 @@
 #include "util.h"
 
 void init_variant_properties() {
-    std::string rf_version;
-
-    rf_version = property_get("ro.boot.rf_v1");
-
     // OP5 is a world phone
     property_set("ro.product.model", "ONEPLUS A5000");
 }
