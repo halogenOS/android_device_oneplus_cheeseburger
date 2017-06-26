@@ -99,10 +99,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml \
     frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml
 
-PRODUCT_PACKAGES += \
-    wpa_supplicant_overlay.conf \
-    p2p_supplicant_overlay.conf
-
 #ANT+ stack
 PRODUCT_PACKAGES += \
     AntHalService \
@@ -118,10 +114,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/rootdir/etc/powerhint_soc_id_292.xml:system/etc/powerhint_soc_id_292.xml
 
-# Copy all rootdir files
+# Copy-all
 PRODUCT_COPY_FILES += \
 	$(foreach _,$(shell find $(PLATFORM_PATH)/rootdir -type f),\
-		$_:$(subst $(PLATFORM_PATH),,$_))
+		$_:$(subst $(PLATFORM_PATH),,$_)) \
+	$(foreach _,$(shell find $(PLATFORM_PATH)/wifi -type f),\
+		$_:$(subst $(PLATFORM_PATH)/wifi,sytem/etc/wifi,$_))
+
+# Keylayout
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
+    $(LOCAL_PATH)/keylayout/synaptics_rmi4_i2c.kl:system/usr/keylayout/synaptics_rmi4_i2c.kl
 
 # Some files from Android.mk
 PRODUCT_PACKAGES += \
