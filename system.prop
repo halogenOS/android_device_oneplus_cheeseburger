@@ -326,3 +326,5 @@ oplib.oneplus_sdk_wrapper=0.1.0
 ro.mdtp.package_name2=com.qualcomm.qti.securemsm.mdtp.MdtpDemo
 
 ro.display.series=OnePlus 5
+
+ro.sf.lcd_density=440
