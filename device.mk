@@ -110,10 +110,6 @@ PRODUCT_PACKAGES += \
     antradio_app \
     libvolumelistener
 
-# FBE support
-PRODUCT_COPY_FILES += \
-    $(PLATFORM_PATH)/rootdir/bin/init.qti.qseecomd.sh:system/bin/init.qti.qseecomd.sh
-
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
@@ -124,8 +120,8 @@ PRODUCT_COPY_FILES += \
 
 # Copy all rootdir files
 PRODUCT_COPY_FILES += \
-	$(foreach _,$(shell find $(PLATFORM_PATH)/rootdir/ -type f),\
-		$_:$(subst $(PLATFORM_PATH),$_,))
+	$(foreach _,$(shell find $(PLATFORM_PATH)/rootdir -type f),\
+		$_:$(subst $(PLATFORM_PATH),,$_))
 
 # Some files from Android.mk
 PRODUCT_PACKAGES += \
