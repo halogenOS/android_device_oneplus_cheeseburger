@@ -122,6 +122,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/rootdir/etc/powerhint_soc_id_292.xml:system/etc/powerhint_soc_id_292.xml
 
+# Copy all rootdir files
+PRODUCT_COPY_FILES += \
+	$(foreach _,$(shell find $(PLATFORM_PATH)/rootdir/ -type f),\
+		$_:$(subst $(PLATFORM_PATH),$_,))
+
 #for android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
