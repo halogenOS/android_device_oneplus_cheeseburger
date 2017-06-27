@@ -117,7 +117,7 @@ PRODUCT_COPY_FILES += \
 # Copy-all
 PRODUCT_COPY_FILES += \
 	$(foreach _,$(shell find $(PLATFORM_PATH)/rootdir -type f),\
-		$_:$(subst $(PLATFORM_PATH)/rootdir,$(TARGET_OUT_ROOT),$_)) \
+		$_:$(subst $(PLATFORM_PATH)/rootdir,root,$_)) \
 	$(foreach _,$(shell find $(PLATFORM_PATH)/wifi -type f),\
 		$_:$(subst $(PLATFORM_PATH)/wifi,sytem/etc/wifi,$_))
 
