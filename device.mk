@@ -110,16 +110,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
 
-# Powerhint configuration file
-PRODUCT_COPY_FILES += \
-    $(PLATFORM_PATH)/rootdir/etc/powerhint_soc_id_292.xml:system/etc/powerhint_soc_id_292.xml
-
 # Copy-all
 PRODUCT_COPY_FILES += \
 	$(foreach _,$(shell find $(PLATFORM_PATH)/rootdir -type f),\
-		$_:$(subst $(PLATFORM_PATH)/rootdir,root,$_)) \
+		$_:$(subst $(realpath PLATFORM_PATH)/rootdir,root,$_)) \
 	$(foreach _,$(shell find $(PLATFORM_PATH)/wifi -type f),\
-		$_:$(subst $(PLATFORM_PATH)/wifi,sytem/etc/wifi,$_))
+		$_:$(subst $(realpath PLATFORM_PATH)/wifi,sytem/etc/wifi,$_))
 
 # Keylayout
 PRODUCT_COPY_FILES += \
@@ -142,9 +138,6 @@ PRODUCT_COPY_FILES += \
 # Init
 PRODUCT_PACKAGES += \
     libinit_cheeseburger \
-
-PRODUCT_COPY_FILES += \
-	$(PLATFORM_PATH)/rootdir/etc/fstab.qcom:$(TARGET_OUT_ROOT)/etc/fstab.qcom
 
 # Audio
 PRODUCT_PACKAGES += \
