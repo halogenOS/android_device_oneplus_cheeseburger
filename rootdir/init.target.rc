@@ -55,8 +55,16 @@ on fs
     mkdir /persist/data 0700 system system
     mkdir /persist/bms 0700 root system
     restorecon_recursive /persist
+#ifdef VENDOR_EDIT
+#### zhiguang.su,make adsp boot faster.
+    write /sys/kernel/boot_adsp/boot 1
+#endif
+
 
     mount ext4 /dev/block/bootdevice/by-name/dsp /dsp ro nosuid nodev barrier=1
+    mount ext4 /dev/block/bootdevice/by-name/dsp_a /dsp ro nosuid nodev barrier=1
+
+
 on post-fs
     start qseecomd
     exec - root root root -- /system/bin/init.qti.qseecomd.sh
@@ -74,17 +82,12 @@ on post-fs-data
     mkdir /data/misc/hbtp 0750 system system
     mkdir /data/misc/seemp 0700 system system
     mkdir /data/misc/qvr 0770 system system
+    mkdir /data/misc/camera/cp 0771 system system
     mkdir /data/misc/qdmastats 0700 system system
     mkdir /data/misc/qdma 0770 system system
 
 # For cpusets initialize for Silver Only first and then Silver + Gold
 # Silver Only configuration cannot work with 0-7
-
-    mkdir /data/fpc_images 0770 system system
-    mkdir /data/fpc_images/verify 0770 system system
-    mkdir /data/fpc_images/enroll 0770 system system
-    mkdir /data/fpc 0770 system system
-    mkdir /data/coredump  0777 system system
 on boot
     start rmt_storage
     start rfs_access
@@ -115,36 +118,14 @@ on boot
    chown system system /persist/speccfg/vendor_persist.prop
    chown system system /persist/speccfg/submask
    chown system system /persist/speccfg/partition
-
-    chmod 0664 /sys/devices/soc/soc:fpc_fpc1020/irq
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/irq
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/report_home
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/report_home
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/update_info
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/update_info
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/screen_state
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/screen_state
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/sensor_version
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/sensor_version
-    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/hw_reset
-    chown system system /sys/devices/soc/soc:fpc_fpc1020/hw_reset
-
-   #NFC, ruanbanmao add for 15801 nfc. 2015/10/19
-   setprop ro.nfc.port "I2C"
-   chmod 0666 /dev/pn544
-   chown nfc nfc /dev/pn544
-
-#fingerprint service
-service fingerprintd /system/bin/fingerprintd
-    class late_start
-    user system
-    group system
-
-service ifaadaemon /system/bin/ifaadaemon
-    class late_start
-    user system
-    group system
-
+#ifdef VENDOR_EDIT
+   chmod 0777 /persist/dual_camera_calibration
+   chmod 0644 /persist/dual_camera_calibration/calibrationOutput.bin
+   chmod 0666 /sys/devices/virtual/graphics/fb0/SRGB
+   chmod 0666 /sys/devices/virtual/graphics/fb0/DCI_P3
+   chmod 0666 /sys/devices/virtual/graphics/fb0/hbm
+   chmod 0666 /sys/devices/virtual/graphics/fb0/night_mode
+#endif
 
 #Peripheral manager
 service per_mgr /system/bin/pm-service
@@ -165,8 +146,8 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-on charger
-    start hvdcp_opti
+#on charger
+#    start hvdcp_opti
 
 ## import cne init file
 service qvop-daemon /system/bin/qvop-daemon
@@ -202,6 +183,41 @@ service qseecomd /system/bin/qseecomd
    class core
    user root
    group root
+
+on boot
+    #NFC, ruanbanmao add for 15801 nfc. 2015/10/19
+    setprop ro.nfc.port "I2C"
+    chmod 0666 /dev/pn544
+    chown nfc nfc /dev/pn544
+    chmod 0666 /dev/p61
+    chown spi spi /dev/p61
+    chmod 0666 /dev/dash/
+    restorecon  /dev/dash
+
+#add by likelong@camera 2016.12.13 for led test in EngineeringMode, torch_0 is warm flash, and torch_1 is cold flash.
+#ifdef VENDOR_EDIT
+    chown system system /sys/class/leds/led:torch_0/brightness
+    chmod 666 /sys/class/leds/led:torch_0/brightness
+    chown system system /sys/class/leds/led:torch_1/brightness
+    chmod 666 /sys/class/leds/led:torch_1/brightness
+    chown system system /sys/class/leds/led:switch_0/brightness
+    chmod 666 /sys/class/leds/led:switch_0/brightness
+#endif
+
+#add by likelong@camera 2017.1.5 set org.codeaurora.snapcam to camera.aux.packagelist
+#ifdef VENDOR_EDIT
+    setprop camera.aux.packagelist "org.codeaurora.snapcam,com.android.engineeringmode,com.oneplus.camera,com.example.camera"
+#endif
+
+#ifdef VENDOR_EDIT
+     write /sys/bus/i2c/devices/5-0020/tp_fw_update 0
+#endif
+
+#fingerprint service
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group system
 
 service spdaemon /system/bin/spdaemon
    class core
@@ -467,9 +483,10 @@ service mdtpd /system/vendor/bin/mdtpd
     group system radio drmrpc
 
 service hvdcp_opti /system/bin/hvdcp_opti
-     class main
-     user root
-     group system wakelock
+    class main
+    user root
+    group system wakelock
+    disabled
 
 service qvrd /system/vendor/bin/qvrservice
     class late_start
@@ -477,6 +494,27 @@ service qvrd /system/vendor/bin/qvrservice
     group system camera graphics
     socket qvrservice stream 0666 system system
 
+#ifdef VENDOR_EDIT
+on property:sys.srgb=1
+   write /sys/devices/virtual/graphics/fb0/SRGB 1
+on property:sys.srgb=0
+   write /sys/devices/virtual/graphics/fb0/SRGB 0
+
+on property:sys.dci3p=1
+   write /sys/devices/virtual/graphics/fb0/DCI_P3 1
+on property:sys.dci3p=0
+   write /sys/devices/virtual/graphics/fb0/DCI_P3 0
+
+on property:sys.hbm=1
+   write /sys/devices/virtual/graphics/fb0/hbm 1
+on property:sys.hbm=0
+   write /sys/devices/virtual/graphics/fb0/hbm 0
+
+on property:sys.night_mode=1
+   write /sys/devices/virtual/graphics/fb0/night_mode 1
+on property:sys.night_mode=0
+   write /sys/devices/virtual/graphics/fb0/night_mode 0
+#endif
 service smcinvoked /system/vendor/bin/smcinvoked
     class main
     user system

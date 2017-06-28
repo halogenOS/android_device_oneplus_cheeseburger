@@ -35,7 +35,11 @@ start_sensors()
         chmod -h 775 /persist/sensors
         chmod -h 664 /persist/sensors/sensors_settings
         chown -h system.root /persist/sensors/sensors_settings
-
+        # ifdef VENDOR_EDIT
+        #qiuchangping@BSP 2015-11-24 add for gyro sensitity calibration
+        chmod -h 664 /persist/sensors/gyro_sensitity_cal
+        chown -h system.root /persist/sensors/gyro_sensitity_cal
+        # endif
         mkdir -p /data/misc/sensors
         chmod -h 775 /data/misc/sensors
 
