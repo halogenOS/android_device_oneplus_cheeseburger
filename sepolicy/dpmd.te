@@ -1,0 +1,4 @@
+allow dpmd mm-qcamerad:dir search;
+allow dpmd mm-qcamerad:file read;
+dontaudit dpmd self:capability sys_ptrace;
+allow dpmd diag_device:chr_file { read write };
