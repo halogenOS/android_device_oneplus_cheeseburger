@@ -122,7 +122,139 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
     $(LOCAL_PATH)/keylayout/synaptics_rmi4_i2c.kl:system/usr/keylayout/synaptics_rmi4_i2c.kl
 
-#for android_filesystem_config.h
+# Haters gonna hate..
+PRODUCT_CHARACTERISTICS := nosdcard
+
+# Audio
+PRODUCT_PACKAGES += \
+    audiod \
+    audio.a2dp.default \
+    audio.primary.msm8998 \
+    audio.r_submix.default \
+    audio.usb.default \
+    libaudio-resampler \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    libvolumelistener \
+    tinymix
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(LOCAL_PATH)/audio/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
+    $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/listen_platform_info.xml:system/etc/listen_platform_info.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_dtp.xml:system/etc/mixer_paths_dtp.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_i2s.xml:system/etc/mixer_paths_i2s.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_qvr.xml:system/etc/mixer_paths_qvr.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_skuk.xml:system/etc/mixer_paths_skuk.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_tasha.xml:system/etc/mixer_paths_tasha.xml \
+    $(LOCAL_PATH)/audio/mixer_paths_tavil.xml:system/etc/mixer_paths_tavil.xml \
+    $(LOCAL_PATH)/audio/sound_trigger_mixer_paths_wcd9330.xml:system/etc/sound_trigger_mixer_paths_wcd9330.xml \
+    $(LOCAL_PATH)/audio/sound_trigger_mixer_paths_wcd9340.xml:system/etc/sound_trigger_mixer_paths_wcd9340.xml \
+    $(LOCAL_PATH)/audio/sound_trigger_mixer_paths.xml:system/etc/sound_trigger_mixer_paths.xml \
+    $(LOCAL_PATH)/audio/sound_trigger_platform_info.xml:system/etc/sound_trigger_platform_info.xml
+
+PRODUCT_COPY_FILES += \
+    $(TOPDIR)frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:/system/etc/a2dp_audio_policy_configuration.xml \
+    $(TOPDIR)frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:/system/etc/audio_policy_volumes.xml \
+    $(TOPDIR)frameworks/av/services/audiopolicy/config/default_volume_tables.xml:/system/etc/default_volume_tables.xml \
+    $(TOPDIR)frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/system/etc/r_submix_audio_policy_configuration.xml \
+    $(TOPDIR)frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/system/etc/usb_audio_policy_configuration.xml
+
+# ANT+
+PRODUCT_PACKAGES += \
+    AntHalService \
+    com.dsi.ant.antradio_library \
+    libantradio
+
+PRODUCT_COPY_FILES += \
+    external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml
+
+# Camera
+PRODUCT_PACKAGES += \
+    SnapdragonCamera
+
+# Connectivity Engine support (CNE)
+PRODUCT_PACKAGES += \
+    cneapiclient \
+    com.quicinc.cne \
+    services-ext
+
+# Display
+PRODUCT_PACKAGES += \
+    copybit.msm8998 \
+    gralloc.msm8998 \
+    hwcomposer.msm8998 \
+    memtrack.msm8998 \
+    liboverlay \
+    libtinyxml
+
+# Fingerprint sensor
+PRODUCT_PACKAGES += \
+    fingerprintd
+
+# For android_filesystem_config.h
+PRODUCT_PACKAGES += \
+    fs_config_files
+
+# IPv6
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes
+
+# IRQ
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
+
+# IRSC
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
+
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8998
+
+# Media
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+
+PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
+
+# NFC
+PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
+    com.nxp.nfc.nq \
+    nfc_nci.nqx.default \
+    NQNfcNci \
+    nqnfcee_access.xml \
+    nqnfcse_access.xml \
+    Tag
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    $(LOCAL_PATH)/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
+
+# OMX
+PRODUCT_PACKAGES += \
+    libc2dcolorconvert \
+    libextmedia_jni \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxCore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
+    libOmxVdec \
+    libOmxVenc \
+    libstagefrighthw
+
+# Power
 PRODUCT_PACKAGES += \
     fs_config_files
 
@@ -131,7 +263,32 @@ PRODUCT_PACKAGES += \
             bootctrl.msm8998 \
             brillo_update_payload
 
-#FEATURE_OPENGLES_EXTENSION_PACK support string config file
+# QMI
+PRODUCT_PACKAGES += \
+    libjson
+
+# Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.qcom.power.rc \
+    init.qcom.rc \
+    init.qcom.sh \
+    init.qcom.usb.configfs.rc \
+    init.qcom.usb.rc \
+    init.qcom.usb.sh \
+    init.target.rc \
+    ueventd.qcom.rc
+
+# RIL
+PRODUCT_PACKAGES += \
+    librmnetctl \
+    libxml2 \
+    libprotobuf-cpp-full
+
+# Sensors
+PRODUCT_PACKAGES += \
+    sensors.msm8998
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
 
@@ -182,4 +339,18 @@ PRODUCT_PACKAGES += \
     power.msm8998 \
     vr.msm8998
 
+# Wifi
+PRODUCT_PACKAGES += \
+    ipacm \
+    ipacm-diag \
+    IPACM_cfg.xml \
+    libqsap_sdk \
+    libQWiFiSoftApCfg \
+    libwpa_client \
+    hostapd \
+    dhcpcd.conf \
+    wpa_supplicant \
+    wpa_supplicant.conf
+
+# Inherit from oppo-common
 $(call inherit-product, device/oppo/common/common.mk)
