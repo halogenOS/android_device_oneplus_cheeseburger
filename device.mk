@@ -110,12 +110,31 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
 
-# Copy-all
+# rootdir and wifi
+# find rootdir/ -type f | sed -e 's/rootdir\///g' | xargs -i echo '        $(PLATFORM_PATH)/rootdir/{}:$(TARGET_OUT_ROOT)/{} \'
+# find wifi/ -type f | sed -e 's/wifi\///g' | xargs -i echo '        $(PLATFORM_PATH)/wifi/{}:$(TARGET_OUT_ETC)/wifi/{} \'
 PRODUCT_COPY_FILES += \
-	$(foreach _,$(shell find $(PLATFORM_PATH)/rootdir -type f),\
-		$_:$(subst $(realpath PLATFORM_PATH)/rootdir,root,$_)) \
-	$(foreach _,$(shell find $(PLATFORM_PATH)/wifi -type f),\
-		$_:$(subst $(realpath PLATFORM_PATH)/wifi,sytem/etc/wifi,$_))
+        $(PLATFORM_PATH)/rootdir/init.qcom.usb.sh:$(TARGET_OUT_ROOT)/init.qcom.usb.sh \
+        $(PLATFORM_PATH)/rootdir/fstab.qcom:$(TARGET_OUT_ROOT)/fstab.qcom \
+        $(PLATFORM_PATH)/rootdir/bin/init.qti.qseecomd.sh:$(TARGET_OUT_ROOT)/bin/init.qti.qseecomd.sh \
+        $(PLATFORM_PATH)/rootdir/bin/init.qcom.modem_links.sh:$(TARGET_OUT_ROOT)/bin/init.qcom.modem_links.sh \
+        $(PLATFORM_PATH)/rootdir/init.oem.rc:$(TARGET_OUT_ROOT)/init.oem.rc \
+        $(PLATFORM_PATH)/rootdir/init.target.rc:$(TARGET_OUT_ROOT)/init.target.rc \
+        $(PLATFORM_PATH)/rootdir/init.qcom.usb.rc:$(TARGET_OUT_ROOT)/init.qcom.usb.rc \
+        $(PLATFORM_PATH)/rootdir/init.usb.configfs.rc:$(TARGET_OUT_ROOT)/init.usb.configfs.rc \
+        $(PLATFORM_PATH)/rootdir/init.qcom.sensors.sh:$(TARGET_OUT_ROOT)/init.qcom.sensors.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.sh:$(TARGET_OUT_ROOT)/init.qcom.sh \
+        $(PLATFORM_PATH)/rootdir/ueventd.qcom.rc:$(TARGET_OUT_ROOT)/ueventd.qcom.rc \
+        $(PLATFORM_PATH)/rootdir/init.qcom.rc:$(TARGET_OUT_ROOT)/init.qcom.rc \
+        $(PLATFORM_PATH)/rootdir/verity_key:$(TARGET_OUT_ROOT)/verity_key \
+        $(PLATFORM_PATH)/wifi/hostapd.accept:$(TARGET_OUT_ETC)/wifi/hostapd.accept \
+        $(PLATFORM_PATH)/wifi/hostapd.conf:$(TARGET_OUT_ETC)/wifi/hostapd.conf \
+        $(PLATFORM_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_OUT_ETC)/wifi/WCNSS_qcom_cfg.ini \
+        $(PLATFORM_PATH)/wifi/hostapd.deny:$(TARGET_OUT_ETC)/wifi/hostapd.deny \
+        $(PLATFORM_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_OUT_ETC)/wifi/wpa_supplicant_overlay.conf \
+        $(PLATFORM_PATH)/wifi/wpa_supplicant_wcn.conf:$(TARGET_OUT_ETC)/wifi/wpa_supplicant_wcn.conf \
+        $(PLATFORM_PATH)/wifi/wifi_concurrency_cfg.txt:$(TARGET_OUT_ETC)/wifi/wifi_concurrency_cfg.txt \
+        $(PLATFORM_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_OUT_ETC)/wifi/p2p_supplicant_overlay.conf
 
 # Keylayout
 PRODUCT_COPY_FILES += \
