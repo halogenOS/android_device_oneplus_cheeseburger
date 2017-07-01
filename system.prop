@@ -327,4 +327,4 @@ ro.mdtp.package_name2=com.qualcomm.qti.securemsm.mdtp.MdtpDemo
 
 ro.display.series=OnePlus 5
 
-ro.sf.lcd_density=440
+ro.sf.lcd_density=432
