@@ -341,3 +341,6 @@ ro.boot.verifiedbootstate=green
 # and provide better responsiveness
 ro.min.fling_velocity=140
 ro.max.fling_velocity=20000
+
+# Wi-Fi
+wifi.interface=wlan0
