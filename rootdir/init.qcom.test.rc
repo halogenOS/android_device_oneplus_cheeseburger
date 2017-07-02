@@ -1,5 +1,4 @@
-#!/system/bin/sh
-# Copyright (c) 2015, The Linux Foundation. All rights reserved.
+# Copyright (c) 2016, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -26,21 +25,35 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-#
-# Function to start sensors for SSC enabled platforms
-#
-start_sensors()
-{
-    if [ -c /dev/msm_dsps -o -c /dev/sensors ]; then
-        chmod -h 775 /persist/sensors
-        chmod -h 664 /persist/sensors/sensors_settings
-        chown -h system.root /persist/sensors/sensors_settings
+write /proc/sys/kernel/kptr_restrict 0
 
-        mkdir -p /data/misc/sensors
-        chmod -h 775 /data/misc/sensors
+# Coresight early boot service
+service cs-early-boot /system/bin/sh /persist/coresight/qdss.agent.sh early-boot /system/etc/init.qcom.debug.sh
+    class core
+    user root
+    oneshot
+    seclabel u:r:qti-testscripts:s0
 
-        start sensors
-    fi
-}
+# Coresight post boot servive
+service cs-post-boot /system/bin/sh /persist/coresight/qdss.agent.sh post-boot /system/etc/init.qcom.debug.sh
+    user root
+    disabled
+    oneshot
+    seclabel u:r:qti-testscripts:s0
 
-start_sensors
+on property:sys.boot_completed=1
+    start cs-post-boot
+
+on property:sys.dbg.coresight.enable=1
+    write /persist/coresight/enable 1
+
+on property:sys.dbg.coresight.enable=0
+    write /persist/coresight/enable 0
+
+# Enable coredump generation
+# on userdebug/eng build
+on post-fs-data
+    # Create directory for coredump-generation.
+    mkdir /data/misc/core 0777 root root
+    # Write core-pattern to generate core file in /data/misc/core
+    write /proc/sys/kernel/core_pattern "/data/misc/core/%E.%p.%e"

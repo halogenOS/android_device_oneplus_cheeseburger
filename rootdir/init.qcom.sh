@@ -26,35 +26,6 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-oemdump=`getprop persist.oem.dump`
-buildtype=`getprop ro.build.release_type`
-if [ "$oemdump" == "" ]; then
-    case "$buildtype" in
-        "release" | "cta")
-           setprop persist.oem.dump 0
-           ;;
-        *)
-           setprop persist.oem.dump 1
-           ;;
-    esac
-fi
-
-#check build variant for printk logging
-#current default minimum boot-time-default
-buildvariant=`getprop ro.build.type`
-case "$buildvariant" in
-    "userdebug" | "eng")
-        #set default loglevel to KERN_INFO
-        #Modify by david@bsp, 20161101 change console loglevel to 7
-        echo "7 6 1 7" > /proc/sys/kernel/printk
-        ;;
-    *)
-        #set default loglevel to KERN_WARNING
-        echo "4 4 1 4" > /proc/sys/kernel/printk
-        ;;
-esac
-
-
 target=`getprop ro.board.platform`
 if [ -f /sys/devices/soc0/soc_id ]; then
     platformid=`cat /sys/devices/soc0/soc_id`
@@ -281,7 +252,7 @@ case "$target" in
                   ;;
         esac
         ;;
-    "msm8994" | "msm8992" | "msm8998")
+    "msm8994" | "msm8992" | "msm8998" | "msmskunk" | "sdmbat")
         start_msm_irqbalance
         ;;
     "msm8996")
@@ -351,7 +322,7 @@ case "$target" in
              hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
         fi
         case "$soc_id" in
-             "293" | "304" )
+             "293" | "304" | "338" )
                   case "$hw_platform" in
                        "Surf")
                                     setprop qemu.hw.mainkeys 0
@@ -367,7 +338,6 @@ case "$target" in
        esac
         ;;
     esac
-
 
 #
 # Copy qcril.db if needed for RIL
@@ -390,10 +360,6 @@ if [ ! -f /firmware/verinfo/ver_info.txt -o "$prev_version_info" != "$cur_versio
     mkdir /data/misc/radio/modem_config
     chmod 770 /data/misc/radio/modem_config
     cp -r /firmware/image/modem_pr/mcfg/configs/* /data/misc/radio/modem_config
-#ifdef VENDOR_EDIT
-# add for mbn_ota.txt , hanqingpu, 20161207
-    cp -r /system/etc/firmware/mbn_ota/mbn_ota.txt /data/misc/radio/modem_config/mbn_ota.txt
-#endif /*VENDOR_EDIT*/
     chown -hR radio.radio /data/misc/radio/modem_config
     cp /firmware/verinfo/ver_info.txt /data/misc/radio/ver_info.txt
     chown radio.radio /data/misc/radio/ver_info.txt
@@ -404,4 +370,14 @@ echo 1 > /data/misc/radio/copy_complete
 
 #check build variant for printk logging
 #current default minimum boot-time-default
-
+buildvariant=`getprop ro.build.type`
+case "$buildvariant" in
+    "userdebug" | "eng")
+        #set default loglevel to KERN_INFO
+        echo "6 6 1 7" > /proc/sys/kernel/printk
+        ;;
+    *)
+        #set default loglevel to KERN_WARNING
+        echo "4 4 1 4" > /proc/sys/kernel/printk
+        ;;
+esac

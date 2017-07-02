@@ -111,22 +111,56 @@ PRODUCT_COPY_FILES += \
     $(PLATFORM_PATH)/configs/msm_irqbalance.conf:system/vendor/etc/msm_irqbalance.conf
 
 # rootdir and wifi
-# find rootdir/ -type f | sed -e 's/rootdir\///g' | xargs -i echo '        $(PLATFORM_PATH)/rootdir/{}:$(TARGET_OUT_ROOT)/{} \'
+# find rootdir/ -type f | sed -e 's/rootdir\///g' | xargs -i echo '        $(PLATFORM_PATH)/rootdir/{}:root/{} \'
 # find wifi/ -type f | sed -e 's/wifi\///g' | xargs -i echo '        $(PLATFORM_PATH)/wifi/{}:$(TARGET_OUT_ETC)/wifi/{} \'
 PRODUCT_COPY_FILES += \
-        $(PLATFORM_PATH)/rootdir/init.qcom.usb.sh:$(TARGET_OUT_ROOT)/init.qcom.usb.sh \
-        $(PLATFORM_PATH)/rootdir/fstab.qcom:$(TARGET_OUT_ROOT)/fstab.qcom \
-        $(PLATFORM_PATH)/rootdir/bin/init.qti.qseecomd.sh:$(TARGET_OUT_ROOT)/bin/init.qti.qseecomd.sh \
-        $(PLATFORM_PATH)/rootdir/bin/init.qcom.modem_links.sh:$(TARGET_OUT_ROOT)/bin/init.qcom.modem_links.sh \
-        $(PLATFORM_PATH)/rootdir/init.oem.rc:$(TARGET_OUT_ROOT)/init.oem.rc \
-        $(PLATFORM_PATH)/rootdir/init.target.rc:$(TARGET_OUT_ROOT)/init.target.rc \
-        $(PLATFORM_PATH)/rootdir/init.qcom.usb.rc:$(TARGET_OUT_ROOT)/init.qcom.usb.rc \
-        $(PLATFORM_PATH)/rootdir/init.usb.configfs.rc:$(TARGET_OUT_ROOT)/init.usb.configfs.rc \
-        $(PLATFORM_PATH)/rootdir/init.qcom.sensors.sh:$(TARGET_OUT_ROOT)/init.qcom.sensors.sh \
-        $(PLATFORM_PATH)/rootdir/init.qcom.sh:$(TARGET_OUT_ROOT)/init.qcom.sh \
-        $(PLATFORM_PATH)/rootdir/ueventd.qcom.rc:$(TARGET_OUT_ROOT)/ueventd.qcom.rc \
-        $(PLATFORM_PATH)/rootdir/init.qcom.rc:$(TARGET_OUT_ROOT)/init.qcom.rc \
-        $(PLATFORM_PATH)/rootdir/verity_key:$(TARGET_OUT_ROOT)/verity_key \
+        $(PLATFORM_PATH)/rootdir/init.qcom.fm.sh:root/init.qcom.fm.sh \
+        $(PLATFORM_PATH)/rootdir/hsic.control.bt.sh:root/hsic.control.bt.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.efs.sync.sh:root/init.qcom.efs.sync.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.syspart_fixup.sh:root/init.qcom.syspart_fixup.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.uicc.sh:root/init.qcom.uicc.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.usb.sh:root/init.qcom.usb.sh \
+        $(PLATFORM_PATH)/rootdir/init.qti.qseecomd.sh:root/init.qti.qseecomd.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.debug.sh:root/init.qcom.debug.sh \
+        $(PLATFORM_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
+        $(PLATFORM_PATH)/rootdir/init.qcom.test.rc:root/init.qcom.test.rc \
+        $(PLATFORM_PATH)/rootdir/bin/init.qti.qseecomd.sh:root/bin/init.qti.qseecomd.sh \
+        $(PLATFORM_PATH)/rootdir/bin/init.qcom.modem_links.sh:root/bin/init.qcom.modem_links.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.coex.sh:root/init.qcom.coex.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.testscripts.sh:root/init.qcom.testscripts.sh \
+        $(PLATFORM_PATH)/rootdir/vold.fstab:root/vold.fstab \
+        $(PLATFORM_PATH)/rootdir/init.qti.dcc.sh:root/init.qti.dcc.sh \
+        $(PLATFORM_PATH)/rootdir/usf_settings.sh:root/usf_settings.sh \
+        $(PLATFORM_PATH)/rootdir/init.oem.rc:root/init.oem.rc \
+        $(PLATFORM_PATH)/rootdir/init.target.rc:root/init.target.rc \
+        $(PLATFORM_PATH)/rootdir/init.qcom.wifi.sh:root/init.qcom.wifi.sh \
+        $(PLATFORM_PATH)/rootdir/init.msm.usb.configfs.rc:root/init.msm.usb.configfs.rc \
+        $(PLATFORM_PATH)/rootdir/init.qcom.ssr.sh:root/init.qcom.ssr.sh \
+        $(PLATFORM_PATH)/rootdir/init.crda.sh:root/init.crda.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.debug-sdm660.sh:root/init.qcom.debug-sdm660.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.usb.rc:root/init.qcom.usb.rc \
+        $(PLATFORM_PATH)/rootdir/init.qcom.modem_links.sh:root/init.qcom.modem_links.sh \
+        $(PLATFORM_PATH)/rootdir/usf_post_boot.sh:root/usf_post_boot.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.sdio.sh:root/init.qcom.sdio.sh \
+        $(PLATFORM_PATH)/rootdir/hcidump.sh:root/hcidump.sh \
+        $(PLATFORM_PATH)/rootdir/init.qti.ims.sh:root/init.qti.ims.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.crashdata.sh:root/init.qcom.crashdata.sh \
+        $(PLATFORM_PATH)/rootdir/init.usb.configfs.rc:root/init.usb.configfs.rc \
+        $(PLATFORM_PATH)/rootdir/init.class_main.sh:root/init.class_main.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.post_boot.sh:root/init.qcom.post_boot.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
+        $(PLATFORM_PATH)/rootdir/init.mdm.sh:root/init.mdm.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.bt.sh:root/init.qcom.bt.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.factory.rc:root/init.qcom.factory.rc \
+        $(PLATFORM_PATH)/rootdir/init.qcom.sensors.sh:root/init.qcom.sensors.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.sh:root/init.qcom.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.audio.sh:root/init.qcom.audio.sh \
+        $(PLATFORM_PATH)/rootdir/qca6234-service.sh:root/qca6234-service.sh \
+        $(PLATFORM_PATH)/rootdir/init.ath3k.bt.sh:root/init.ath3k.bt.sh \
+        $(PLATFORM_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
+        $(PLATFORM_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
+        $(PLATFORM_PATH)/rootdir/verity_key:root/verity_key \
         $(PLATFORM_PATH)/wifi/hostapd.accept:$(TARGET_OUT_ETC)/wifi/hostapd.accept \
         $(PLATFORM_PATH)/wifi/hostapd.conf:$(TARGET_OUT_ETC)/wifi/hostapd.conf \
         $(PLATFORM_PATH)/wifi/WCNSS_qcom_cfg.ini:$(TARGET_OUT_ETC)/wifi/WCNSS_qcom_cfg.ini \

@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2015, The Linux Foundation. All rights reserved.
+#Copyright (c) 2011-2012, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -26,21 +26,16 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-#
-# Function to start sensors for SSC enabled platforms
-#
-start_sensors()
+LOG_DIR="/data/hcidump/"
+LOG_TAG="hcidump"
+LOG_FILE=`date +%Y%m%d%H%M%S`.cfa
+
+logv ()
 {
-    if [ -c /dev/msm_dsps -o -c /dev/sensors ]; then
-        chmod -h 775 /persist/sensors
-        chmod -h 664 /persist/sensors/sensors_settings
-        chown -h system.root /persist/sensors/sensors_settings
-
-        mkdir -p /data/misc/sensors
-        chmod -h 775 /data/misc/sensors
-
-        start sensors
-    fi
+  /system/bin/log -t $LOG_TAG -p v "$LOG_NAME $@"
 }
 
-start_sensors
+mkdir $LOG_DIR
+logv "Starting hcidump to $LOG_DIR$LOG_FILE"
+/system/xbin/hcidump -xw $LOG_DIR$LOG_FILE &
+/system/bin/logwrapper /system/xbin/hcidump -xt

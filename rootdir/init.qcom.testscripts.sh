@@ -26,21 +26,16 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+# This is the file for test teams to trigger their test setup.
 #
-# Function to start sensors for SSC enabled platforms
-#
-start_sensors()
-{
-    if [ -c /dev/msm_dsps -o -c /dev/sensors ]; then
-        chmod -h 775 /persist/sensors
-        chmod -h 664 /persist/sensors/sensors_settings
-        chown -h system.root /persist/sensors/sensors_settings
+# Sample command: /system/bin/sh /sdcard/command.sh
+# All the output files will be created under root privilege. Please use
+# "adb root" before pulling the generated files.
 
-        mkdir -p /data/misc/sensors
-        chmod -h 775 /data/misc/sensors
+target=`getprop ro.board.platform`
 
-        start sensors
-    fi
-}
-
-start_sensors
+case "$target" in
+    "msm8996")
+	echo 1 > /sys/kernel/debug/scm_errata/kryo_e76
+	;;
+esac
