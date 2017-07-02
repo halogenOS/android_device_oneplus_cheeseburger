@@ -121,12 +121,12 @@ PRODUCT_COPY_FILES += \
         $(PLATFORM_PATH)/rootdir/init.qcom.usb.sh:root/init.qcom.usb.sh \
         $(PLATFORM_PATH)/rootdir/init.qti.qseecomd.sh:root/init.qti.qseecomd.sh \
         $(PLATFORM_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
-        $(PLATFORM_PATH)/rootdir/init.qcom.test.rc:root/init.qcom.test.rc \
         $(PLATFORM_PATH)/rootdir/bin/init.qti.qseecomd.sh:root/bin/init.qti.qseecomd.sh \
         $(PLATFORM_PATH)/rootdir/bin/init.qcom.modem_links.sh:root/bin/init.qcom.modem_links.sh \
         $(PLATFORM_PATH)/rootdir/init.qcom.coex.sh:root/init.qcom.coex.sh \
         $(PLATFORM_PATH)/rootdir/vold.fstab:root/vold.fstab \
         $(PLATFORM_PATH)/rootdir/init.qti.dcc.sh:root/init.qti.dcc.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.usb.configfs.rc:root/init.qcom.usb.configfs.rc \
         $(PLATFORM_PATH)/rootdir/usf_settings.sh:root/usf_settings.sh \
         $(PLATFORM_PATH)/rootdir/init.oem.rc:root/init.oem.rc \
         $(PLATFORM_PATH)/rootdir/init.target.rc:root/init.target.rc \
@@ -139,6 +139,7 @@ PRODUCT_COPY_FILES += \
         $(PLATFORM_PATH)/rootdir/usf_post_boot.sh:root/usf_post_boot.sh \
         $(PLATFORM_PATH)/rootdir/init.qcom.sdio.sh:root/init.qcom.sdio.sh \
         $(PLATFORM_PATH)/rootdir/hcidump.sh:root/hcidump.sh \
+        $(PLATFORM_PATH)/rootdir/init.qcom.power.rc:root/init.qcom.power.rc \
         $(PLATFORM_PATH)/rootdir/init.qti.ims.sh:root/init.qti.ims.sh \
         $(PLATFORM_PATH)/rootdir/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
         $(PLATFORM_PATH)/rootdir/init.usb.configfs.rc:root/init.usb.configfs.rc \
