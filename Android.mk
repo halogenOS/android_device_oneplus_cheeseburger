@@ -4,6 +4,8 @@ LOCAL_PATH := $(call my-dir)
 
 include vendor/oneplus/cheeseburger/extra.mk
 
+LOCAL_PATH := $(call my-dir)
+
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
 
 ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
