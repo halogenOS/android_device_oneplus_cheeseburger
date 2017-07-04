@@ -1,12 +1,19 @@
+
 ifeq ($(TARGET_DEVICE),cheeseburger)
 
 LOCAL_PATH := $(call my-dir)
 
-include vendor/oneplus/cheeseburger/extra.mk
-
-LOCAL_PATH := $(call my-dir)
-
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
+
+include $(CLEAR_VARS)
+LOCAL_MODULE        := dashd
+LOCAL_MODULE_CLASS  := EXECUTABLES
+LOCAL_MODULE_TAGS   := optional
+LOCAL_SRC_FILES     := ../../../../vendor/oneplus/cheeseburger/proprietary/sbin/dashd
+LOCAL_MODULE_PATH   := $(TARGET_ROOT_OUT_SBIN)
+LOCAL_FORCE_STATIC_EXECUTABLE := true
+LOCAL_UNSTRIPPED_PATH := $(TARGET_ROOT_OUT_SBIN_UNSTRIPPED)
+include $(BUILD_PREBUILT)
 
 ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
 # Create symbolic links for WLAN
