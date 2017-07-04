@@ -55,4 +55,12 @@ setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 
 extract "$MY_DIR"/proprietary-files.txt "$SRC"
 
+mkdir -p "$CM_ROOT"/vendor/$VENDOR/$DEVICE/proprietary/sbin
+echo "  - $CM_ROOT/vendor/$VENDOR/$DEVICE/proprietary/sbin/dashd"
+if [ "$SRC" == "adb" ]; then
+  adb pull /sbin/dashd "$CM_ROOT"/vendor/$VENDOR/$DEVICE/proprietary/sbin/
+else
+  cp "$SRC"/boot/ramdisk/sbin/dashd "$CM_ROOT"/vendor/$VENDOR/$DEVICE/proprietary/sbin/
+fi
+
 "$MY_DIR"/setup-makefiles.sh
