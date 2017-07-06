@@ -1,3 +1,2 @@
 allow init cam_sysfs:file relabelto;
 allow init logd:dir getattr;
-allow init sysfs:dir write;

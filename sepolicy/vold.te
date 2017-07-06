@@ -1,2 +1,1 @@
 allow vold proc_touchpanel:dir { read open };
-allow vold kernel:key search;
