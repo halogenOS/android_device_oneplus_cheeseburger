@@ -283,7 +283,7 @@ persist.radio.apm_sim_not_pwdn=1
 persist.radio.sib16_support=1
 persist.radio.custom_ecc=1
 persist.radio.multisim.config=dsds
-ro.frp.pst=/dev/block/bootdevice/by-name/config
+# ro.frp.pst=/dev/block/bootdevice/by-name/config
 
 drm.service.enabled=true
 af.fast_track_multiplier=2
