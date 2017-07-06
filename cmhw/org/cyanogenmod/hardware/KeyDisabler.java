@@ -40,7 +40,7 @@ public class KeyDisabler {
     }
 
     public static boolean isActive() {
-        return FileUtils.readString(CONTROL_PATH[0]).contains("1");
+        return FileUtils.readString(CONTROL_PATHS[0]).contains("1");
     }
 
     public static boolean setActive(boolean state) {
