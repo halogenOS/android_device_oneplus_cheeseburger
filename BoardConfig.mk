@@ -248,7 +248,7 @@ WLAN_CHIPSET := qca_cld3
 
 # RIL
 TARGET_RIL_VARIANT := caf
-#PROTOBUF_SUPPORTED := true
+PROTOBUF_SUPPORTED := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
