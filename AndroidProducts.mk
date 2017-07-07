@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/mokee.mk
+    $(LOCAL_DIR)/carbon_cheeseburger.mk

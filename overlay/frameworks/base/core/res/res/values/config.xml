@@ -66,8 +66,6 @@
          Must be in the range specified by minimum and maximum. -->
     <integer name="config_screenBrightnessSettingDefault">46</integer>
 
-    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
-
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
 
@@ -330,12 +328,6 @@
     <!-- If true, the doze component is not started until after the screen has been
           turned off and the screen off animation has been performed. -->
     <bool name="config_dozeAfterScreenOff">true</bool>
-
-    <!-- Doze: should the tilt sensor be used as a pulse signal. -->
-    <bool name="config_dozePulseTilt">true</bool>
-
-    <!-- Doze: should the proximity sensor (handwave / pocket mode) be used as a pulse signal. -->
-    <bool name="config_dozePulseProximity">true</bool>
 
     <!-- Power Management: Specifies whether to decouple the interactive state of the
          device from the display on/off state.
