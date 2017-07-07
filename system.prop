@@ -83,7 +83,6 @@ drm.service.enabled=true
 # ro.frp.pst=/dev/block/bootdevice/by-name/config
 
 # Graphics
-ro.sf.lcd_density=480
 debug.sf.hw=1
 debug.gralloc.enable_fb_ubwc=1
 dev.pm.dyn_samplingrate=1
@@ -184,3 +183,20 @@ sys.usb.rmnet.func.name=gsi
 
 # Wi-Fi
 wifi.interface=wlan0
+
+ro.display.series=OnePlus 5
+
+ro.sf.lcd_density=432
+# Upside down
+ro.sf.hwrotation=180
+
+# Da SN
+ro.boot.verifiedbootstate=green
+
+###      Tweaks and UX improvements      ###
+#  exclusively made by the halogenOS team  #
+
+# Higher fling velocities to smooth scrolling
+# and provide better responsiveness
+ro.min.fling_velocity=140
+ro.max.fling_velocity=20000
