@@ -243,6 +243,9 @@ WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
 WIFI_DRIVER_MODULE_NAME := "wlan"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
+TARGET_FORCE_DEXPREOPT ?= false
+WITH_DEXPREOPT := $(TARGET_FORCE_DEXPREOPT)
+
 # inherit from the proprietary version
 -include vendor/oneplus/cheeseburger/BoardConfigVendor.mk
 
