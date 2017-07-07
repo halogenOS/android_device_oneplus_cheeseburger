@@ -89,9 +89,6 @@ TARGET_KERNEL_CONFIG := cheeseburger_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_BUILD_VARIANT := user
 
-# HAX: Remove AOSP
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
