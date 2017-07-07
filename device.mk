@@ -95,6 +95,7 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
+    libaudioroute \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
@@ -281,6 +282,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2 \
+    libjson \
     libprotobuf-cpp-full
 
 # Sensors
