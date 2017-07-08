@@ -1,0 +1,2 @@
+add_lunch_combo XOS_cheeseburger-userdebug
+add_lunch_combo XOS_cheeseburger-eng
