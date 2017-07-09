@@ -249,10 +249,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint_soc_id_292.xml:system/etc/powerhint.xml
 
-# QMI
-PRODUCT_PACKAGES += \
-    libjson
-
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
