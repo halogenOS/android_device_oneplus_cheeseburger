@@ -87,6 +87,10 @@ $(call inherit-product, frameworks/native/build/phone-xxxhdpi-4096-hwui-memory.m
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
+# Telephony
+PRODUCT_PACKAGES  += telephony-ext
+PRODUCT_BOOT_JARS += telephony-ext
+
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
