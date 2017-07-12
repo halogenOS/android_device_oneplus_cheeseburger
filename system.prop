@@ -185,8 +185,6 @@ sys.usb.rmnet.func.name=gsi
 wifi.interface=wlan0
 
 ro.sf.lcd_density=432
-# Upside down
-ro.sf.hwrotation=180
 
 # Da SN
 ro.boot.verifiedbootstate=green
