@@ -225,6 +225,9 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 TARGET_FORCE_DEXPREOPT ?= false
 WITH_DEXPREOPT := $(TARGET_FORCE_DEXPREOPT)
 
+# D2TW
+TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
+
 # inherit from the proprietary version
 -include vendor/oneplus/cheeseburger/BoardConfigVendor.mk
 
