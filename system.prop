@@ -79,9 +79,6 @@ persist.data.mode=concurrent
 # DRM
 drm.service.enabled=true
 
-# FRP
-# ro.frp.pst=/dev/block/bootdevice/by-name/config
-
 # Graphics
 ro.sf.lcd_density=420
 debug.sf.hw=1
@@ -177,7 +174,7 @@ ro.qti.sensors.multishake=true
 # Tethering
 net.tethering.noprovisioning=true
 
-# Timeservice
+# Time service
 persist.timed.enable=true
 
 # USB
@@ -187,3 +184,13 @@ sys.usb.rmnet.func.name=gsi
 
 # Wi-Fi
 wifi.interface=wlan0
+
+# DU Updater
+ro.du.updater=cheeseburger
+
+# Google Assistant
+ro.opa.eligible_device=true
+
+# USB configs
+persist.sys.usb.config=mtp,adb
+ro.adb.secure=0
