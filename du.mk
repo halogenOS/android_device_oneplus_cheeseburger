@@ -24,6 +24,10 @@ $(call inherit-product, device/oneplus/cheeseburger/device.mk)
 # Inherit some common DU stuff.
 $(call inherit-product, vendor/du/config/common_full_phone.mk)
 
+# Build Launcher3
+PRODUCT_PACKAGES += \
+        Launcher3
+
 PRODUCT_NAME := du_cheeseburger
 PRODUCT_DEVICE := cheeseburger
 PRODUCT_MANUFACTURER := OnePlus
