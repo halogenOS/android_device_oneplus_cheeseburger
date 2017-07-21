@@ -206,3 +206,8 @@ ro.max.fling_velocity=20000
 dalvik.vm.boot-dex2oat-threads=12
 dalvik.vm.dex2oat-threads=12
 dalvik.vm.image-dex2oat-threads=12
+
+# VoLTE
+persist.dbg.ims_volte_enable=1
+persist.dbg.volte_avail_ovr=1
+persist.dbg.vt_avail_ovr=1
