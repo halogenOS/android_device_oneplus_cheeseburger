@@ -201,3 +201,8 @@ ro.boot.verifiedbootstate=green
 # and provide better responsiveness
 ro.min.fling_velocity=140
 ro.max.fling_velocity=20000
+
+# Dex2oat limits
+dalvik.vm.boot-dex2oat-threads=12
+dalvik.vm.dex2oat-threads=12
+dalvik.vm.image-dex2oat-threads=12
