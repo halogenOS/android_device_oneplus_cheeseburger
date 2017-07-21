@@ -19,6 +19,5 @@ allow init runas_exec:file getattr;
 allow init sdcardd_exec:file getattr;
 allow init sgdisk_exec:file getattr;
 allow init socket_device:sock_file { create setattr unlink };
-allow init userinit_exec:file getattr;
 
 domain_trans(init, rootfs, dashd)
