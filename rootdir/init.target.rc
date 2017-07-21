@@ -53,8 +53,6 @@ on fs
     mkdir /persist/bms 0700 root system
     restorecon_recursive /persist
 
-    start gatekeeperd
-    start qseecomd
     wait /dev/block/bootdevice/by-name/userdata
 
 #ifdef VENDOR_EDIT
