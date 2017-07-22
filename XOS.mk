@@ -39,7 +39,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=OnePlus5 PRODUCT_NAME=OnePlus5
 #    persist.ota.version=$(shell date +%Y%m%d) \
 #    persist.ota.manifest=https://raw.githubusercontent.com/halogenOS/android_extras_ota/XOS-7.1/$(PRODUCT_NAME).xml
 
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST += ro.product.model
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	BUILD_FINGERPRINT=OnePlus/OnePlus5/OnePlus5:7.1.1/NMF26X/06282233:user/release-keys \
