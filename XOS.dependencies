@@ -13,5 +13,17 @@
     "repository": "android_kernel_oneplus_msm8998",
     "target_path": "kernel/oneplus/msm8998",
     "branch":       "XOS-7.1"
+  },
+  {
+    "repository": "xanaxdroid/aarch64-6.3",
+    "target_path": "prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-6.3.1-kernel-linaro",
+    "remote": "bitbucket",
+    "branch": "linaro"
+  },
+  {
+    "repository": "xdevs23/aarch64-linux-android-7.0",
+    "target_path": "prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-7.0-uber",
+    "remote": "bitbucket",
+    "branch": "master"
   }
 ]
