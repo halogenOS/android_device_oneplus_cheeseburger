@@ -33,6 +33,9 @@ on boot
     # Enable sched boost
     write /proc/sys/kernel/sched_boost 1
 
+    write /sys/block/sda/queue/scheduler noop
+    setprop sys.io.scheduler "noop"
+
 on charger
     mount ext4 /dev/block/bootdevice/by-name/system /system ro
 
