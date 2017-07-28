@@ -34,10 +34,10 @@ PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 TARGET_VENDOR_PRODUCT_NAME := OnePlus5
 TARGET_VENDOR_DEVICE_NAME := OnePlus5
 PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=OnePlus5 PRODUCT_NAME=OnePlus5
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    persist.ota.romname=$(PRODUCT_NAME) \
-#    persist.ota.version=$(shell date +%Y%m%d) \
-#    persist.ota.manifest=https://raw.githubusercontent.com/halogenOS/android_extras_ota/XOS-7.1/$(PRODUCT_NAME).xml
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.ota.romname=$(PRODUCT_NAME) \
+    persist.ota.version=$(shell date +%Y%m%d) \
+    persist.ota.manifest=https://raw.githubusercontent.com/halogenOS/android_extras_ota/XOS-7.1/$(PRODUCT_NAME).xml
 
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
