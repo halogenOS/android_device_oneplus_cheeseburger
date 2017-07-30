@@ -12,3 +12,5 @@ allow cameraserver property_socket:sock_file write;
 allow cameraserver cameraserver:socket { getattr read ioctl append write lock };
 allow cameraserver shell_exec:file { execute getattr };
 allow cameraserver system_file:file execute;
+allow cameraserver sensors_persist_file:dir { read search };
+allow cameraserver sensorservice_service:service_manager find;
