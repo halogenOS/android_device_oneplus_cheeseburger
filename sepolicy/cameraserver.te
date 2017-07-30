@@ -1,8 +1,8 @@
 allow cameraserver cameraserver:process execmem;
 allow cameraserver diag_prop:file { r_file_perms getattr };
 allow cameraserver diag_prop:property_service set;
-allow cameraserver persist_file:file rw_file_perms;
-allow cameraserver persist_file:file setattr;
+allow cameraserver persist_file:file { rw_file_perms setattr };
+allow cameraserver persist_file:dir search;
 allow cameraserver shell_exec:file { r_file_perms execute };
 allow cameraserver self:socket create;
 allow cameraserver camera_prop:property_service set;
