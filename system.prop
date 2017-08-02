@@ -59,7 +59,6 @@ ro.qualcomm.cabl=0
 
 # Camera
 camera.aux.packagelist=org.codeaurora.snapcam,com.oneplus.camera
-
 persist.camera.mobicat=2
 persist.camera.stats.debugexif=3080192
 persist.ts.rtmakeup=false
@@ -118,7 +117,6 @@ ro.vendor.at_library=libqti-at.so
 
 # RIL
 rild.libpath=/system/vendor/lib64/libril-qc-qmi-1.so
-
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
 persist.rild.nitz_long_ons_1=
@@ -128,7 +126,6 @@ persist.rild.nitz_short_ons_0=
 persist.rild.nitz_short_ons_1=
 persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
-
 ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
 ro.telephony.default_network=22,20
@@ -136,7 +133,6 @@ telephony.lteOnCdmaDevice=1
 keyguard.no_require_sim=true
 ro.com.android.dataroaming=true
 persist.sys.oem_smooth=1
-
 persist.radio.VT_CAM_INTERFACE=1
 persist.radio.apm_sim_not_pwdn=1
 persist.radio.sib16_support=1
@@ -182,14 +178,14 @@ sys.usb.controller=a800000.dwc3
 sys.usb.rndis.func.name=gsi
 sys.usb.rmnet.func.name=gsi
 
-#VoLTE
+# VoLTE
 persist.volte_enabled_by_hw=1
 persist.dbg.ims_volte_enable=1
 persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
 
-# Wi-Fi
+# WiFi
 wifi.interface=wlan0
 
 # DU Updater
