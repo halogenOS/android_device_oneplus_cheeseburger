@@ -1,0 +1,9 @@
+type v4a_app, domain;
+app_domain(v4a_app)
+
+# Rumble rumble, v4a ftw
+allow v4a_app rootfs:dir r_file_perms;
+allow v4a_app system_data_file:file r_file_perms;
+allow v4a_app shell_data_file:dir { getattr search };
+allow v4a_app rfs_system_file:dir { getattr search };
+allow v4a_app audioserver_service:service_manager find;
