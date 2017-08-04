@@ -93,3 +93,14 @@ allow v4a_app preloads_data_file:file r_file_perms;
 
 # Allow AOPT to call module_request
 allow v4a_app kernel:system module_request;
+
+# isolated
+
+# Access already open app data files received over Binder or local socket IPC.
+allow v4a_app app_data_file:file { read write getattr lock };
+
+allow v4a_app activity_service:service_manager find;
+allow v4a_app display_service:service_manager find;
+allow v4a_app webviewupdate_service:service_manager find;
+
+allow v4a_app { sdcard_type media_rw_data_file }:file { read write append getattr lock };
