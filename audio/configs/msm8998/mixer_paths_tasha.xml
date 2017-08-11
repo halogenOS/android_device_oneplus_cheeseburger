@@ -2263,7 +2263,6 @@
         <ctl name="DMIC MUX8" value="DMIC5" />
         <ctl name="DEC8 Volume" value="93" />
     </path>
-<!--modified end-->
 
  <path name="handset-mic-re-three">
         <!--ctl name="AIF1_CAP Mixer SLIM TX5" value="1" />
