@@ -67,6 +67,7 @@ DEVICE_PACKAGE_OVERLAYS += device/oneplus/cheeseburger/audio/configs/common/over
 PRODUCT_COPY_FILES += \
     device/oneplus/cheeseburger/audio/configs/msm8998/audio_output_policy.conf:system/vendor/etc/audio_output_policy.conf \
     device/oneplus/cheeseburger/audio/configs/msm8998/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/oneplus/cheeseburger/audio/configs/msm8998/audio_policy.conf:system/etc/audio_policy.conf \
     device/oneplus/cheeseburger/audio/configs/msm8998/mixer_paths.xml:system/etc/mixer_paths.xml \
     device/oneplus/cheeseburger/audio/configs/msm8998/mixer_paths_tasha.xml:system/etc/mixer_paths_tasha.xml \
     device/oneplus/cheeseburger/audio/configs/msm8998/mixer_paths_qvr.xml:system/etc/mixer_paths_qvr.xml \
