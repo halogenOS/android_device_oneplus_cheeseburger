@@ -41,11 +41,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-	BUILD_FINGERPRINT=OnePlus/OnePlus5/OnePlus5:7.1.1/NMF26X/06282233:user/release-keys \
-	PRIVATE_BUILD_DESC="OnePlus5-user 7.1.1 NMF26X 19 release-keys"
+        BUILD_FINGERPRINT=OnePlus/OnePlus5/OnePlus5:7.1.1/NMF26X/07311003:user/release-keys \
+        PRIVATE_BUILD_DESC="OnePlus5-user 7.1.1 NMF26X 28 release-keys"
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.build.oemfingerprint=7.1.1/NMF26X/06282233:user/release-keys \
-	ro.build.ota.versionname=OnePlus5Oxygen_23_1707192021 \
-	ro.build.version.ota=OnePlus5Oxygen_23.O.11_GLO_011_1707192021
+        ro.build.oemfingerprint=7.1.1/NMF26X/07311003:user/release-keys \
+        ro.build.ota.versionname=OnePlus5Oxygen_23_1708032241 \
+        ro.build.version.ota=OnePlus5Oxygen_23.O.13_GLO_013_1708032241
 
 TARGET_VENDOR := oneplus
