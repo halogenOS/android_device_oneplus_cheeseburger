@@ -1,5 +1,6 @@
 type ifaadaemon, domain;
 type ifaadaemon_exec, exec_type, file_type;
+type ifaadaemon_service, service_manager_type;
 
 #Allow for transition from init domain to ifaadaemon
 init_daemon_domain(ifaadaemon)

@@ -1,3 +1,7 @@
+# executables
+/system/bin/ifaadaemon                                          u:object_r:ifaadaemon_exec:s0
+/system/bin/init.qti.qseecomd.sh                                u:object_r:init-qti-fbe-sh_exec:s0
+
 # We have a couple of non-standard NV partitions
 /dev/block/bootdevice/by-name/oem_dycnvbk                       u:object_r:modem_efs_partition_device:s0
 /dev/block/bootdevice/by-name/oem_stanvbk                       u:object_r:modem_efs_partition_device:s0
@@ -14,10 +18,14 @@
 /dev/fpc1020                                                    u:object_r:fpc1020_device:s0
 /data/fpc(/.*)?                                                 u:object_r:fpc_data_file:s0
 /data/fpc_images(/.*)?                                          u:object_r:fpc_images_file:s0
-/sys/devices/soc/soc:fpc_fpc1020/irq                            u:object_r:sysfs_fpc_irq:s0
-/sys/devices/soc/soc:fpc_fpc1020/proximity_state                u:object_r:sysfs_fpc_proximity:s0
 
 /dev/dash                                                       u:object_r:input_device:s0
+
+/sys/devices/soc/soc:fpc_fpc1020/irq                            u:object_r:sysfs_fpc_irq:s0
+/sys/devices/soc/soc:fpc_fpc1020/proximity_state                u:object_r:sysfs_fpc_proximity:s0
+/sys/devices/soc/soc:fpc_fpc1020/report_home                    u:object_r:sysfs_fpc_home:s0
+/sys/devices/soc/soc:fpc_fpc1020/screen_state                   u:object_r:sysfs_fpc_screen:s0
+
 /sys/devices/soc/.*ssusb/power_supply/usb(/.*)?                 u:object_r:sysfs_usb_supply:s0
 
 /sys/devices/soc/qpnp-fg-[0-9a-f]+/power_supply/bms/battery_4p4v_present u:object_r:sysfs_batteryinfo:s0
@@ -29,7 +37,5 @@
 /sys/kernel/debug/msm_core(/.*)?                                u:object_r:debugfs_msm_core:s0
 
 /sys/kernel/debug/rmt_storage/rmts                              u:object_r:debugfs_rmts:s0
-
-/system/bin/ifaadaemon                                          u:object_r:ifaadaemon_exec:s0
 
 /system/bin/remosaic_daemon                                     u:object_r:remosaic_daemon_exec:s0

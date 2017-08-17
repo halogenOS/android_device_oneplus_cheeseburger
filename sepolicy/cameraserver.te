@@ -1,3 +1,7 @@
+type dumpsys, domain;
+
+r_dir_file(cameraserver, persist_file)
+
 allow cameraserver cameraserver:process execmem;
 allow cameraserver diag_prop:file { r_file_perms getattr };
 allow cameraserver diag_prop:property_service set;
@@ -14,3 +18,7 @@ allow cameraserver shell_exec:file { execute getattr };
 allow cameraserver system_file:file execute;
 allow cameraserver sensors_persist_file:dir { read search };
 allow cameraserver sensorservice_service:service_manager find;
+allow cameraserver media_rw_data_file:dir search;
+allow cameraserver self:process { execmem };
+allow cameraserver adsprpcd_file:dir { getattr search };
+allow cameraserver adsprpcd_file:file { r_file_perms };
