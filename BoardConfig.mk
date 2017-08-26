@@ -94,7 +94,7 @@ BOARD_KERNEL_CMDLINE := \
     service_locator.enable=1 \
     swiotlb=2048 \
     androidboot.usbcontroller=a800000.dwc3 \
-    androidboot.selinux=enforcing \
+    androidboot.selinux=permissive \
     androidboot.verifiedbootstate=green \
     androidboot.veritymode=enforcing
 BOARD_KERNEL_BASE := 0x00000000
@@ -221,8 +221,8 @@ TARGET_RIL_VARIANT := caf
 PROTOBUF_SUPPORTED := true
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+#include device/qcom/sepolicy/sepolicy.mk
+#BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
