@@ -2,7 +2,7 @@
   {
     "repository": "android_device_oppo_common",
     "target_path": "device/oppo/common",
-    "branch":       "XOS-7.1"
+    "branch":       "XOS-8.0"
   },
   {
     "repository": "android_vendor_oneplus_cheeseburger",
