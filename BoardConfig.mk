@@ -113,6 +113,9 @@ TARGET_KERNEL_BUILD_VARIANT := user
 # Enable real time lockscreen charging current values
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
+# REMOVE ASAP
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+
 # QCOM hardware
 #BOARD_USES_QCOM_HARDWARE := true
 
