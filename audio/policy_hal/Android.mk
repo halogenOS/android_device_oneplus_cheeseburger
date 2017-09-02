@@ -20,6 +20,7 @@ LOCAL_SRC_FILES := AudioPolicyManager.cpp
 
 LOCAL_C_INCLUDES := $(TOPDIR)frameworks/av/services \
                     $(TOPDIR)frameworks/av/services/audioflinger \
+                    $(TOPDIR)system/core/base/include \
                     $(call include-path-for, audio-effects) \
                     $(call include-path-for, audio-utils) \
                     $(TOPDIR)frameworks/av/services/audiopolicy/common/include \
@@ -35,7 +36,9 @@ LOCAL_SHARED_LIBRARIES := \
     liblog \
     libsoundtrigger \
     libaudiopolicymanagerdefault \
-    libserviceutility
+    libserviceutility \
+    libbase \
+    liblog
 
 LOCAL_STATIC_LIBRARIES := \
     libmedia_helper \
