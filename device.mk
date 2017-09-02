@@ -95,6 +95,9 @@ PRODUCT_BOOT_JARS += telephony-ext
 #    audio.primary.msm8998 \
 # Audio
 PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.soundtrigger@2.0-impl \
     audiod \
     audio.a2dp.default \
     audio.r_submix.default \
@@ -139,6 +142,10 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-impl
 # Enable binderized camera HAL
 #PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-service
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-impl
+
 # Camera
 PRODUCT_PACKAGES += \
     camera.device@3.2-impl \
@@ -156,10 +163,16 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.memtrack@1.0-impl \
     copybit.msm8998 \
     gralloc.msm8998 \
     hwcomposer.msm8998 \
     memtrack.msm8998 \
+    libgenlock \
     liboverlay \
     libtinyxml \
     android.hardware.graphics.allocator@2.0-impl \
@@ -168,8 +181,13 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
     android.hardware.graphics.composer@2.1-impl
 
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl
+
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
+    android.hardware.biometrics.fingerprint@2.1-impl \
     fingerprintd \
     android.hardware.biometrics.fingerprint@2.1-service
 
@@ -177,8 +195,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# Gatekeeper HAL
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl
+
 # GPS
 PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0 \
     gps.msm8998 \
     gps.conf \
     libgps.utils \
@@ -218,14 +241,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
     $(LOCAL_PATH)/keylayout/synaptics.kl:system/usr/keylayout/synaptics.kl
 
-# Keymaster HAL
+# Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.msm8998 \
-    android.hardware.light@2.0-impl
+    android.hardware.light@2.0-impl \
+    lights.msm8998
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -240,6 +263,7 @@ PRODUCT_COPY_FILES += \
 
 # NFC
 PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0-impl \
     com.android.nfc_extras \
     nfc_nci.pn54x.default \
     NfcNci \
@@ -267,9 +291,8 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.msm8998 \
-    powerhint.qti \
-    android.hardware.power@1.0-impl
+    android.hardware.power@1.0-impl \
+    power.msm8998
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint_soc_id_292.xml:system/etc/powerhint.xml
@@ -303,6 +326,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
 
+# RenderScript HAL
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl
+
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
@@ -312,11 +339,17 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl \
     sensors.msm8998
 
 # Vehicle network (for slim_daemon)
 PRODUCT_PACKAGES += \
     libvehiclenetwork-native
+
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service \
+    com.android.future.usb.accessory
 
 # Vibrator
 PRODUCT_PACKAGES += \
