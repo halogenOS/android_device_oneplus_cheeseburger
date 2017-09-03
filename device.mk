@@ -92,11 +92,11 @@ PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_PACKAGES  += telephony-ext
 PRODUCT_BOOT_JARS += telephony-ext
 
+#    audio.primary.msm8998 \
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
     audio.a2dp.default \
-    audio.primary.msm8998 \
     audio.r_submix.default \
     audio.usb.default \
     libaudio-resampler \
