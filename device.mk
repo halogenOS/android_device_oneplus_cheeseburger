@@ -351,6 +351,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libvehiclenetwork-native
 
+# Shims
+PRODUCT_PACKAGES += \
+    libshims_system_properties
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service \
