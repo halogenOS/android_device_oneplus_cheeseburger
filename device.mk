@@ -383,6 +383,7 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     wificond \
     hostapd \
+    wificond \
     wpa_supplicant \
     wpa_supplicant.conf
 
