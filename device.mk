@@ -343,6 +343,7 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    android.hardware.broadcastradio@1.0-impl \
     librmnetctl \
     libxml2 \
     libjson \
