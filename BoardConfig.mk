@@ -31,7 +31,7 @@ TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
 BOARD_VENDOR := oneplus
 
 # Assertions
-TARGET_OTA_ASSERT_DEVICE := OnePlus5,cheeseburger,oneplus5,op5,A5000,ONEPLUS A5000
+TARGET_OTA_ASSERT_DEVICE := "OnePlus5,cheeseburger,oneplus5,op5,A5000,ONEPLUS A5000"
 
 # Optimizations
 POLLY_OPTS := true
