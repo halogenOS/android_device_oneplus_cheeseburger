@@ -278,10 +278,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0-impl \
     com.android.nfc_extras \
-    nfc_nci.pn54x.default \
+    nfc_nci.msm8998 \
     NfcNci \
-    nfcee_access.xml \
-    nfcse_access.xml \
     Tag
 
 PRODUCT_COPY_FILES += \
