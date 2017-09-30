@@ -72,6 +72,8 @@ on init
     write /dev/stune/foreground/schedtune.colocate 0
     write /dev/stune/top-app/schedtune.colocate 1
 
+    write /proc/touchpanel/double_tap_enable 1
+
 on post-fs
     chown system system /proc/ship_mode
     chown system system /dev/param
