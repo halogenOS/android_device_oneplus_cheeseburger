@@ -368,10 +368,6 @@ PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl \
     sensors.msm8998
 
-# Vehicle network (for slim_daemon)
-PRODUCT_PACKAGES += \
-    libvehiclenetwork-native
-
 # Shims
 PRODUCT_PACKAGES += \
     libshims_system_properties
