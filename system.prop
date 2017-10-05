@@ -173,7 +173,7 @@ ro.qti.sensors.multishake=true
 net.tethering.noprovisioning=true
 
 # Storage
-#ro.sys.sdcardfs=true
+ro.sys.sdcardfs=true
 
 # Time service
 persist.timed.enable=true
