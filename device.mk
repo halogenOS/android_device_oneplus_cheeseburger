@@ -219,6 +219,7 @@ PRODUCT_COPY_FILES += \
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
+    libhypv_intercept \
     libextmedia_jni \
     libOmxAacEnc \
     libOmxAmrEnc \
@@ -261,7 +262,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.uicc.sh:system/etc/init.qcom.uicc.sh \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
-    $(LOCAL_PATH)/rootdir/etc/init.qti.ims.sh:system/etc/init.qti.ims.sh
+    $(LOCAL_PATH)/rootdir/etc/init.qti.ims.sh:system/etc/init.qti.ims.sh \
+    $(LOCAL_PATH)/rootdir/etc/loggy.sh:system/bin/loggy.sh
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -275,8 +277,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediaextractor-seccomp.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
 
 # Sensors
-PRODUCT_PACKAGES += \
-    sensors.msm8998
+#PRODUCT_PACKAGES += \
+#    sensors.msm8998
 
 # Shims
 PRODUCT_PACKAGES += \
@@ -299,6 +301,10 @@ PRODUCT_PACKAGES += \
     wifilogd \
     wpa_supplicant \
     wpa_supplicant.conf
+
+# Netutils
+PRODUCT_PACKAGES += \
+    netutils-wrapper-1.0
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \

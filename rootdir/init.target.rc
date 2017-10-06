@@ -36,8 +36,8 @@ on early-init
     mkdir /dsp 0771 media media
 
 on fs
-    wait /dev/block/platform/soc/1da4000.ufshc
-    symlink /dev/block/platform/soc/1da4000.ufshc /dev/block/bootdevice
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     mount_all fstab.qcom
     swapon_all fstab.qcom
 
@@ -47,7 +47,7 @@ on fs
 
     wait /dev/block/bootdevice/by-name/persist
     exec /system/bin/e2fsck -y /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist noatime nosuid nodev barrier=1
 
     mkdir /persist/data 0700 system system
     mkdir /persist/bms 0700 root system
@@ -158,6 +158,8 @@ on boot
     chown system system /sys/devices/soc/soc:fpc_fpc1020/sensor_version
     chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/hw_reset
     chown system system /sys/devices/soc/soc:fpc_fpc1020/hw_reset
+    chmod 0660 /sys/devices/soc/soc:fpc_fpc1020/proximity_state
+    chown system system /sys/devices/soc/soc:fpc_fpc1020/proximity_state
 
     # NFC
     chmod 0666 /dev/pn544
@@ -229,6 +231,11 @@ on boot
     chown system system /sys/class/timed_output/vibrator/wf_rep
     chown system system /sys/class/timed_output/vibrator/wf_s_rep
 
+    # Load WLAN driver, to satisfy wificond
+    insmod /system/lib/modules/wlan.ko
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+    setprop wlan.driver.status "ok"
+
 #fingerprint service
 service fingerprintd /system/bin/fingerprintd
     class late_start
@@ -274,6 +281,7 @@ service seempd /system/bin/seempd
     user system
     group system
     socket seempdw dgram 0666 system system
+    disabled
 
 service thermal-engine /system/vendor/bin/thermal-engine
    class main

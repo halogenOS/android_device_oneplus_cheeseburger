@@ -34,7 +34,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
 
-# Gatekeeper HAL
+# Gatekeeper
 PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
     android.hardware.gatekeeper@1.0-service
@@ -65,7 +65,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.power@1.0-impl
 
-# RenderScript HAL
+# RenderScript
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
 
