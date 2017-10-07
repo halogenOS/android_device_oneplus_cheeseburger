@@ -265,8 +265,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.uicc.sh:system/etc/init.qcom.uicc.sh \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
-    $(LOCAL_PATH)/rootdir/etc/init.qti.ims.sh:system/etc/init.qti.ims.sh \
-    $(LOCAL_PATH)/rootdir/etc/loggy.sh:system/bin/loggy.sh
+    $(LOCAL_PATH)/rootdir/etc/init.qti.ims.sh:system/etc/init.qti.ims.sh
 
 # RIL
 PRODUCT_PACKAGES += \
