@@ -113,6 +113,7 @@ TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 TARGET_KERNEL_CONFIG := cheeseburger_defconfig
 TARGET_FRESHLY_COMPILED_DTBTOOL := true
 TARGET_KERNEL_BUILD_VARIANT := user
+TARGET_COMPILE_WITH_MSM_KERNEL := true
 
 # Enable real time lockscreen charging current values
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
