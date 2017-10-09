@@ -67,9 +67,29 @@ ENABLE_SCHEDBOOST := true
 TARGET_USES_UEFI := true
 TARGET_USES_64_BIT_BINDER := true
 
+# Toolchain
+TARGET_CUSTOM_TOOLCHAIN := true
+TARGET_GCC_VERSION := 6.3
+TARGET_GCC_VERSION_EXP := 4.9
+TARGET_GCC_VERSION_EXP_ARM64 := $(TARGET_GCC_VERSION)
+TARGET_GCC_VERSION_ARM64 := 7.1.1-kernel-linaro
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linaro-linux-gnu-
+TARGET_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/aarch64/$(TARGET_CROSS_COMPILE_PREFIX)$(TARGET_GCC_VERSION_ARM64)/bin
+TARGET_TOOLCHAIN_ROOT := prebuilts/gcc/linux-x86/aarch64/$(TARGET_CROSS_COMPILE_PREFIX)$(TARGET_GCC_VERSION_EXP_ARM64)-linaro
+TARGET_TOOLS_PREFIX := $(TARGET_TOOLCHAIN_ROOT)/bin/$(TARGET_CROSS_COMPILE_PREFIX)
+
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=2048
-BOARD_KERNEL_CMDLINE += androidboot.configfs=true
+BOARD_KERNEL_CMDLINE := \
+    androidboot.hardware=qcom \
+    ehci-hcd.park=3 \
+    lpm_levels.sleep_disabled=1 \
+    sched_enable_hmp=1 \
+    sched_enable_power_aware=1 \
+    service_locator.enable=1 \
+    swiotlb=2048 \
+    androidboot.configfs=true \
+    ndroidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
@@ -81,9 +101,8 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8998
 TARGET_KERNEL_CONFIG := lineage_cheeseburger_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-
-# REMOVE ASAP
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+TARGET_KERNEL_BUILD_VARIANT := user
+TARGET_COMPILE_WITH_MSM_KERNEL := true
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
