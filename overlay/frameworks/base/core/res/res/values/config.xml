@@ -422,4 +422,6 @@
     <!-- Whether device has dash charging support
     <bool name="config_hasDashCharger">true</bool> -->
 
+    <!-- doze always on -->
+    <bool name="config_enableDozeAlwaysOn">true</bool>
 </resources>
