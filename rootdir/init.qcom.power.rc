@@ -8,6 +8,9 @@ on init
     write /dev/stune/top-app/schedtune.colocate 1
 
 on boot
+    write /proc/sys/vm/swappiness 4
+    setprop sys.vm.swappiness 4
+
     # Update foreground and background cpusets
     write /dev/cpuset/foreground/cpus 0-7
     write /dev/cpuset/foreground/boost/cpus 0-7
