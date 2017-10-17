@@ -23,7 +23,7 @@ on boot
 
     # Set I/O Scheduler tweaks
     write /sys/block/sda/queue/scheduler maple
-    write /sys/block/sda/queue/read_ahead_kb 512
+    write /sys/block/sda/queue/read_ahead_kb 2048
     write /sys/block/sda/queue/iosched/writes_starved 4
     write /sys/block/sda/queue/iosched/fifo_batch 16
     write /sys/block/sda/queue/iosched/sync_read_expire 350
