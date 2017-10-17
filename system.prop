@@ -49,7 +49,7 @@ ro.cutoff_voltage_mv=3200
 
 # Bluetooth
 bt.max.hfpclient.connections=1
-persist.bt.a2dp.aac_disable=true
+persist.bt.a2dp.aac_disable=false
 persist.bt.a2dp.aptx_disable=false
 persist.bt.a2dp.aptx_hd_disable=false
 persist.bt.a2dp_offload_cap=sbc-aptx-aptxhd-aac
@@ -72,7 +72,7 @@ persist.cne.feature=1
 
 # Core control
 ro.core_ctl_min_cpu=2
-ro.core_ctl_max_cpu=4
+ro.core_ctl_max_cpu=8
 
 # Data
 ro.use_data_netmgrd=true
@@ -93,7 +93,7 @@ ro.opengles.version=196610
 persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0
 persist.hwc.enable_vds=1
-sdm.perf_hint_window=50
+sdm.perf_hint_window=60
 
 # Media
 media.stagefright.enable-player=true
@@ -114,7 +114,7 @@ ro.nfc.port=I2C
 persist.nfc.smartcard.config=SIM1,eSE1
 
 # Perf
-ro.sys.fw.bg_apps_limit=60
+ro.sys.fw.bg_apps_limit=120
 ro.vendor.extension_library=libqti-perfd-client.so
 ro.am.reschedule_service=true
 
@@ -197,15 +197,11 @@ persist.dbg.wfc_avail_ovr=1
 # WiFi
 wifi.interface=wlan0
 
-# DU Updater
-ro.du.updater=cheeseburger
-
 # Google Assistant
 ro.opa.eligible_device=true
 
 # USB configs
 persist.sys.usb.config=mtp,adb
-ro.adb.secure=0
 
 ###      Tweaks and UX improvements      ###
 #  exclusively made by the halogenOS team  #
