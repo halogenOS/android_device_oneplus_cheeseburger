@@ -233,6 +233,8 @@ on boot
     chown system system /sys/class/timed_output/vibrator/wf_rep
     chown system system /sys/class/timed_output/vibrator/wf_s_rep
 
+    write /sys/class/power_supply/usb/otg_switch 1
+
 #fingerprint service
 service fingerprintd /system/bin/fingerprintd
     class late_start
