@@ -83,7 +83,7 @@ persist.data.mode=concurrent
 drm.service.enabled=true
 
 # Graphics
-ro.sf.lcd_density=432
+ro.sf.lcd_density=420
 debug.sf.hw=1
 debug.gralloc.enable_fb_ubwc=1
 dev.pm.dyn_samplingrate=1
