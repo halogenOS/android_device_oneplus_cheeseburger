@@ -6208,32 +6208,6 @@ typedef struct {
   */
 #define RIL_REQUEST_SET_SIM_CARD_POWER 140
 
-#define RIL_REQUEST_SET_CARRIER_RESTRICTIONS 141
-
-/**
- * RIL_REQUEST_GET_CARRIER_RESTRICTIONS
- *
- * Get carrier restrictions for this sim slot. Expected modem behavior:
- *  Return list of allowed carriers, or null if all carriers are allowed.
- *
- * "data" is NULL
- *
- * "response" is const RIL_CarrierRestrictions *.
- * If response is NULL, it means all carriers are allowed.
- *
- * Valid errors:
- *  RIL_E_SUCCESS
- *  RIL_E_RADIO_NOT_AVAILABLE
- *  RIL_E_REQUEST_NOT_SUPPORTED
- *  INVALID_ARGUMENTS
- *  MODEM_INTERNAL_FAILURE
- *  INTERNAL_ERR
- *  NO_MEMORY
- *  NO_RESOURCES
- *  CANCELLED
- */
-#define RIL_REQUEST_SET_SIM_CARD_POWER 150
-
 #define RIL_REQUEST_SET_CARRIER_INFO_IMSI_ENCRYPTION 141
 
 /**
