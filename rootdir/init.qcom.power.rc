@@ -41,9 +41,9 @@ on boot
     write /sys/module/wakeup/parameters/enable_timerfd_ws 0
 
     # Sound settings
-    write /sys/kernel/sound_control/earpiece_gain 10
-    write /sys/kernel/sound_control/mic_gain 10
-    write /sys/kernel/sound_control/headphone_gain "10 10"
+    write /sys/kernel/sound_control/earpiece_gain 2
+    write /sys/kernel/sound_control/mic_gain 2
+    write /sys/kernel/sound_control/headphone_gain "0 0"
 
     # Don't treat storage as rotational
     write /sys/block/sda/queue/rotational 0
