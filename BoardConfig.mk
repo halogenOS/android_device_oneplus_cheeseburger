@@ -225,6 +225,7 @@ TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/recovery.fstab
 # RIL
 #BOARD_PROVIDES_LIBRIL := true
 PROTOBUF_SUPPORTED := true
+BUILD_CAF_DATASERVICES := true
 
 # SELinux
 #include device/qcom/sepolicy/sepolicy.mk
