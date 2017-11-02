@@ -282,7 +282,7 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    sensors.msm8998
+    sensors.default
 
 # Shims
 PRODUCT_PACKAGES += \
