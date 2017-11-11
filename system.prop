@@ -215,3 +215,6 @@ ro.max.fling_velocity=20000
 dalvik.vm.boot-dex2oat-threads=8
 dalvik.vm.dex2oat-threads=8
 dalvik.vm.image-dex2oat-threads=8
+
+# USB
+sys.usb.configfs=1
