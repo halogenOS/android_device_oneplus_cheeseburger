@@ -59,14 +59,6 @@ init_DMM()
 {
     block=-1
 
-    case "$target" in
-    "msm7630_surf" | "msm7630_1x" | "msm7630_fusion" | "msm8960")
-        ;;
-    *)
-        return
-        ;;
-    esac
-
     mem="/sys/devices/system/memory"
     op=`cat $mem/movable_start_bytes`
     case "$op" in
@@ -89,40 +81,8 @@ init_DMM()
         chown -h system.system $mem/active
         chown -h system.system $mem/remove
 
-        case "$target" in
-        "msm7630_surf" | "msm7630_1x" | "msm7630_fusion")
-            echo $movable_start_bytes > $mem/probe
-            case "$?" in
-            "0")
-                log -p i -t DMM $movable_start_bytes to physical hotplug succeeded.
-                ;;
-            *)
-                log -p e -t DMM $movable_start_bytes to physical hotplug failed.
-                return
-                ;;
-            esac
-
-            echo online > $mem/memory$block/state
-            case "$?" in
-            "0")
-                log -p i -t DMM \'echo online\' to logical hotplug succeeded.
-                ;;
-            *)
-                log -p e -t DMM \'echo online\' to logical hotplug failed.
-                return
-                ;;
-            esac
-            ;;
-        esac
-
         setprop ro.dev.dmm.dpd.start_address $movable_start_bytes
         setprop ro.dev.dmm.dpd.block $block
-        ;;
-    esac
-
-    case "$target" in
-    "msm8960")
-        return
         ;;
     esac
 
@@ -143,73 +103,3 @@ init_DMM()
         ;;
     esac
 }
-
-#
-# For controlling console and shell on console on 8960 - perist.serial.enable 8960
-# On other target use default ro.debuggable property.
-#
-serial=`getprop persist.serial.enable`
-dserial=`getprop ro.debuggable`
-case "$target" in
-    "msm8960")
-        case "$serial" in
-            "0")
-                echo 0 > /sys/devices/platform/msm_serial_hsl.0/console
-                ;;
-            "1")
-                echo 1 > /sys/devices/platform/msm_serial_hsl.0/console
-                start console
-                ;;
-            *)
-                case "$dserial" in
-                     "1")
-                         start console
-                         ;;
-                esac
-                ;;
-        esac
-        ;;
-
-    "msm8610" | "msm8974" | "msm8226")
-	case "$serial" in
-	     "0")
-		echo 0 > /sys/devices/f991f000.serial/console
-		;;
-	     "1")
-		echo 1 > /sys/devices/f991f000.serial/console
-		start console
-		;;
-            *)
-		case "$dserial" in
-                     "1")
-			start console
-			;;
-		esac
-		;;
-	esac
-	;;
-    *)
-        case "$dserial" in
-            "1")
-                start console
-                ;;
-        esac
-        ;;
-esac
-
-case "$target" in
-    "msm7630_surf" | "msm7630_1x" | "msm7630_fusion")
-        insmod /system/lib/modules/ss_mfcinit.ko
-        insmod /system/lib/modules/ss_vencoder.ko
-        insmod /system/lib/modules/ss_vdecoder.ko
-        chmod -h 0666 /dev/ss_mfc_reg
-        chmod -h 0666 /dev/ss_vdec
-        chmod -h 0666 /dev/ss_venc
-
-        init_DMM
-        ;;
-
-    "msm8960")
-        init_DMM
-        ;;
-esac
