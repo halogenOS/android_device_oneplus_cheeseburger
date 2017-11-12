@@ -282,7 +282,6 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    sensors.default \
     sensors.cheeseburger
 
 # Shims
