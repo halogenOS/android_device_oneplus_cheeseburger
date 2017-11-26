@@ -33,11 +33,6 @@ trigger_file=$dir0/ims_diabled
 ims_disabled=`getprop persist.ims.disabled`
 target=`getprop ro.build.product`
 
-#if [ ! -e $trigger_file ]; then
-#   for future use in doing conditional debugging
-#else
-#
-#fi
 echo "$ims_disabled"
 echo "$target"
 
@@ -47,7 +42,7 @@ if [ "$ims_disabled" = "0" ]; then
     exit
 fi
 
-if [ "$ims_disabled" = "1" ] || [ "$target" = "msm8909_512" ]; then
+if [ "$ims_disabled" = "1" ]; then
     echo "ims is disabled"
     setprop service.qti.ims.enabled 0
 else

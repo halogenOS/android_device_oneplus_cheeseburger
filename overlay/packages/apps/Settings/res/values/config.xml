@@ -15,15 +15,15 @@
 -->
 
 <resources>
-  <bool name="config_show_volumeRockerWake">true</bool>
-
-  <!-- Defines the location of the fingerprint sensor on the device
+    <bool name="config_show_volumeRockerWake">true</bool>
+    
+    <!-- Defines the location of the fingerprint sensor on the device
        0 = back
        1 = front
        2 = left side
        3 = right side
-  -->
-  <integer name="config_fingerprintSensorLocation">1</integer>
+    -->
+    <integer name="config_fingerprintSensorLocation">1</integer>
 
     <!-- When true enable gesture anywhere in Settings. -->
     <bool name="config_gesture_settings_enabled">false</bool>

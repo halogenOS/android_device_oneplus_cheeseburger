@@ -144,66 +144,28 @@ config_bt ()
         ;;
   esac
 
-  #Enable Bluetooth Profiles specific to target Dynamically
-  case $target in
-    "msm8960")
-       if [ "$btsoc" != "ath3k" ] && [ "$soc_hwid" != "130" ]
-       then
-           setprop ro.bluetooth.hfp.ver 1.6
-           setprop ro.qualcomm.bt.hci_transport smd
-       fi
-       ;;
-    "msm8974" | "msm8226" | "msm8610" | "msm8916" | "msm8909" | "msm8952" | "msm8937" | "msm8953" )
-       if [ "$btsoc" != "ath3k" ]
-       then
-           setprop ro.bluetooth.hfp.ver 1.7
-           setprop ro.qualcomm.bt.hci_transport smd
-       fi
-       ;;
-    "apq8084" | "mpq8092" | "msm8994" | "msm8992" )
-       if [ "$btsoc" != "rome" ]
-       then
-           setprop ro.qualcomm.bt.hci_transport smd
-       elif [ "$btsoc" = "rome" ]
-       then
-           setprop ro.bluetooth.hfp.ver 1.6
-       fi
-       ;;
-    "msm8996" )
-       if [ "$btsoc" != "rome" ]
-       then
-           setprop ro.qualcomm.bt.hci_transport smd
-       elif [ "$btsoc" = "rome" ]
-       then
-           setprop ro.bluetooth.hfp.ver 1.7
-       fi
-       ;;
-    "msm8998")
-       setprop ro.bluetooth.hfp.ver 1.6
-       ;;
-    *)
-       ;;
-  esac
-
-if [ -f /system/etc/bluetooth/stack.conf ]; then
-stack=`cat /system/etc/bluetooth/stack.conf`
-fi
-
-case "$stack" in
+  #Enable Bluetooth Profiles specific to target
+  setprop ro.bluetooth.hfp.ver 1.6
+  
+  if [ -f /system/etc/bluetooth/stack.conf ]; then
+    stack=`cat /system/etc/bluetooth/stack.conf`
+  fi
+  
+  case "$stack" in
     "bluez")
-	   logi "Bluetooth stack is $stack"
-	   setprop ro.qc.bluetooth.stack $stack
-	   reason=`getprop vold.decrypt`
-	   case "$reason" in
-	       "trigger_restart_framework")
-	           start dbus
-	           ;;
-	   esac
-        ;;
+      logi "Bluetooth stack is $stack"
+      setprop ro.qc.bluetooth.stack $stack
+      reason=`getprop vold.decrypt`
+      case "$reason" in
+        "trigger_restart_framework")
+          start dbus
+      ;;
+      esac
+    ;;
     *)
-	   logi "Bluetooth stack is Bluedroid"
-        ;;
-esac
+      logi "Bluetooth stack is Bluedroid"
+    ;;
+  esac
 
 }
 

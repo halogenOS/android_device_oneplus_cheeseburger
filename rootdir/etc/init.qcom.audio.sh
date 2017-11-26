@@ -41,79 +41,7 @@ fi
 PATH=/sbin:/system/sbin:/system/bin:/system/xbin
 export PATH
 
-case "$target" in
-    msm8960*)
-        echo "The TARGET ID is $target"
-    case $soc_hwid in
-         "130")
-            echo "The BTSOC ID is $btsoc"
-            echo "Setting soft links for auxpcm files"
-            rm /etc/snd_soc_msm/snd_soc_msm 2>/dev/null
-            rm /etc/snd_soc_msm/snd_soc_msm_2x 2>/dev/null
-            rm /etc/snd_soc_msm/snd_soc_msm_2x_mpq 2>/dev/null
-            rm /etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 2>/dev/null
-            rm /etc/snd_soc_msm/snd_soc_msm_Sitar 2>/dev/null
-            ln -s /etc/snd_soc_msm/snd_soc_msm_auxpcm             /etc/snd_soc_msm/snd_soc_msm 2>/dev/null
-            ln -s /etc/snd_soc_msm/snd_soc_msm_2x_auxpcm          /etc/snd_soc_msm/snd_soc_msm_2x 2>/dev/null
-            ln -s /etc/snd_soc_msm/snd_soc_msm_2x_mpq_auxpcm      /etc/snd_soc_msm/snd_soc_msm_2x_mpq 2>/dev/null
-            ln -s /etc/snd_soc_msm/snd_soc_msm_2x_Fusion3_auxpcm  /etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 2>/dev/null
-            ln -s /etc/snd_soc_msm/snd_soc_msm_Sitar_auxpcm       /etc/snd_soc_msm/snd_soc_msm_Sitar 2>/dev/null
-            setprop qcom.audio.init complete
-            exit 0
-        ;;
-    *)
-        ;;
-    esac
-    ;;
-*)
-    ;;
-esac
-
 echo "The BTSOC ID is $btsoc"
-case "$btsoc" in
-    "ath3k")
-	case "$target" in
-	    msm8974*)
-		echo "Setting soft links for auxpcm files"
-		rm /etc/snd_soc_msm/snd_soc_msm_Taiko_liquid 2>/dev/null
-		ln -s /etc/snd_soc_msm/snd_soc_msm_Taiko_liquid_auxpcm	/etc/snd_soc_msm/snd_soc_msm_Taiko_liquid 2>/dev/null
-		;;
-	    msm8960*)
-	        echo "Setting soft links for auxpcm files"
-		rm /etc/snd_soc_msm/snd_soc_msm 2>/dev/null
-		rm /etc/snd_soc_msm/snd_soc_msm_2x 2>/dev/null
-		rm /etc/snd_soc_msm/snd_soc_msm_2x_mpq 2>/dev/null
-		rm /etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 2>/dev/null
-		rm /etc/snd_soc_msm/snd_soc_msm_Sitar 2>/dev/null
-		ln -s /etc/snd_soc_msm/snd_soc_msm_auxpcm             /etc/snd_soc_msm/snd_soc_msm 2>/dev/null
-		ln -s /etc/snd_soc_msm/snd_soc_msm_2x_auxpcm          /etc/snd_soc_msm/snd_soc_msm_2x 2>/dev/null
-		ln -s /etc/snd_soc_msm/snd_soc_msm_2x_mpq_auxpcm      /etc/snd_soc_msm/snd_soc_msm_2x_mpq 2>/dev/null
-		ln -s /etc/snd_soc_msm/snd_soc_msm_2x_Fusion3_auxpcm  /etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 2>/dev/null
-		ln -s /etc/snd_soc_msm/snd_soc_msm_Sitar_auxpcm       /etc/snd_soc_msm/snd_soc_msm_Sitar 2>/dev/null
-		;;
-	    *)
-		;;
-	esac
-        ;;
-    *)
-	case "$target" in
-	    msm8974*)
-		echo "Not setting soft links, remove Auxpcm UCM files"
-		rm /etc/snd_soc_msm/snd_soc_msm_Taiko_liquid_auxpcm 2>/dev/null
-		;;
-	    msm8960*)
-		echo "Not setting soft links, remove Auxpcm UCM files"
-		rm /etc/snd_soc_msm/snd_soc_msm_auxpcm 2>/dev/null
-		rm /etc/snd_soc_msm/snd_soc_msm_2x_auxpcm 2>/dev/null
-		rm /etc/snd_soc_msm/snd_soc_msm_2x_mpq_auxpcm 2>/dev/null
-		rm /etc/snd_soc_msm/snd_soc_msm_2x_Fusion3_auxpcm 2>/dev/null
-		rm /etc/snd_soc_msm/snd_soc_msm_Sitar_auxpcm 2>/dev/null
-		;;
-	    *)
-		;;
-	esac
-        ;;
-esac
 
 setprop qcom.audio.init complete
 exit 0

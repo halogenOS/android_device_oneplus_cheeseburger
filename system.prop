@@ -12,7 +12,7 @@ persist.audio.fluence.voicerec=true
 persist.audio.fluence.speaker=true
 tunnel.audio.encode=false
 persist.audio.ras.enabled=false
-audio.offload.buffer.size.kb=32
+audio.offload.buffer.size.kb=64
 audio.offload.video=true
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
@@ -152,6 +152,7 @@ persist.radio.enhance_ecall=true
 persist.radio.hw_mbn_update=0
 persist.radio.sw_mbn_update=0
 persist.radio.start_ota_daemon=0
+persist.ims.disabled=0
 
 # RmNet Data
 persist.rmnet.data.enable=true
@@ -215,6 +216,3 @@ ro.max.fling_velocity=20000
 dalvik.vm.boot-dex2oat-threads=8
 dalvik.vm.dex2oat-threads=8
 dalvik.vm.image-dex2oat-threads=8
-
-# USB
-sys.usb.configfs=1

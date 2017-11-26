@@ -45,81 +45,11 @@ fi
 PATH=/sbin:/system/sbin:/system/bin:/system/xbin
 export PATH
 
-uicc_insert()
-{
-    case $target in
-    "msm8916")
-        if [ $soc_hwid == "239" ]; then
-            echo Y > /sys/module/ehci_msm_uicc/parameters/uicc_card_present
-            echo 79c0000.qcom,ehci-host  > /sys/bus/platform/drivers/msm_ehci_uicc/bind
-        elif [ $soc_hwid == "206" ]; then
-            echo Y > /sys/module/ice40_hcd/parameters/uicc_card_present
-            echo spi0.0 > /sys/bus/spi/drivers/ice40_spi/bind
-        else
-            echo "The TARGET ID is $target hw $soc_hwid"
-        fi
-        ;;
-    "msm8610")
-        insmod /system/lib/modules/ice40-hcd.ko
-        ;;
-    "msm8226")
-        echo 1 > /sys/bus/platform/devices/msm_smsc_hub/enable
-        ;;
-    "msm8974")
-        echo Y > /sys/module/ehci_hcd/parameters/uicc_card_present
-        echo msm_ehci_host > /sys/bus/platform/drivers/msm_ehci_host/bind
-        ;;
-    "msm8994")
-        echo Y > /sys/module/ehci_msm2/parameters/uicc_card_present
-        echo f9a55000.ehci > /sys/bus/platform/drivers/msm_ehci_host/bind
-        ;;
-    *)
-        echo "USB_UICC invalid target when insert uicc!"
-        ;;
-    esac
-}
-
-uicc_remove()
-{
-    case $target in
-    "msm8916")
-        if [ $soc_hwid == "239" ]; then
-            echo 79c0000.qcom,ehci-host  > /sys/bus/platform/drivers/msm_ehci_uicc/unbind
-            echo N > /sys/module/ehci_msm_uicc/parameters/uicc_card_present
-        elif [ $soc_hwid == "206" ]; then
-            echo spi0.0 > /sys/bus/spi/drivers/ice40_spi/unbind
-            echo N > /sys/module/ice40_hcd/parameters/uicc_card_present
-        else
-            echo "The TARGET ID is $target hw $soc_hwid"
-        fi
-        ;;
-    "msm8610")
-        rmmod /system/lib/modules/ice40-hcd.ko
-        ;;
-    "msm8226")
-        echo 0 > /sys/bus/platform/devices/msm_smsc_hub/enable
-        ;;
-    "msm8974")
-        echo msm_ehci_host > /sys/bus/platform/drivers/msm_ehci_host/unbind
-        echo N > /sys/module/ehci_hcd/parameters/uicc_card_present
-        ;;
-    "msm8994")
-        echo f9a55000.ehci > /sys/bus/platform/drivers/msm_ehci_host/unbind
-        echo N > /sys/module/ehci_msm2/parameters/uicc_card_present
-        ;;
-    *)
-        echo "USB_UICC invalid target when remove uicc!"
-        ;;
-    esac
-}
-
 case $action in
 "1")
-    uicc_insert
     setprop sys.usb_uicc.loading 0
     ;;
 "0")
-    uicc_remove
     setprop sys.usb_uicc.loading 0
     ;;
 *)
