@@ -38,7 +38,7 @@ on early-init
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-    mount_all fstab.qcom
+    mount_all fstab.qcom --early
     swapon_all fstab.qcom
 
     # Keeping following partitions outside fstab file. As user may not have
@@ -53,12 +53,13 @@ on fs
     mkdir /persist/bms 0700 root system
     restorecon_recursive /persist
 
-#ifdef VENDOR_EDIT
-#### zhiguang.su,make adsp boot faster.
-    write /sys/kernel/boot_adsp/boot 1
-#endif
-
     mount ext4 /dev/block/bootdevice/by-name/dsp /dsp ro nosuid nodev barrier=1
+
+    start hwservicemanager
+
+    # qseecomd needs /dev/block/bootdevice
+    # vold needs keymaster that needs qseecomd
+    start qseecomd
 
 on init
     export LD_SHIM_LIBS "/system/lib/hw/camera.msm8998.so|libcamera_shim.so:/system/vendor/lib64/libril-qc-qmi-1.so|libshims_system_properties.so:/system/lib/hw/camera.msm8998.so|libcamera_shim_display.so:/system/vendor/lib/libfusionLibrary.so|libcamera_shim_buffer.so:/system/vendor/lib/libmmcamera_ppeiscore.so|libcamera_shim_native.so:/system/vendor/lib/libcamera_bokeh_wrapper.so|libcamera_shim_native.so"
@@ -74,6 +75,17 @@ on init
 
     write /proc/touchpanel/double_tap_enable 1
 
+on late-fs
+    # Start services for bootanim
+    start surfaceflinger
+    start bootanim
+    start hwcomposer-2-1
+    start configstore-hal-1-0
+    start gralloc-2-0
+
+    # Mount RW partitions which need run fsck
+    mount_all /vendor/etc/fstab.qcom --late
+
 on post-fs
     chown system system /proc/ship_mode
     chown system system /dev/param
@@ -86,6 +98,9 @@ on post-fs
 
     # Initialize IPA for rmnet
     write /dev/ipa 1
+
+    # Wait qseecomd started
+    wait_for_prop sys.listeners.registered true
 
 on post-fs-data
     mkdir /data/tombstones/modem 0771 system system
