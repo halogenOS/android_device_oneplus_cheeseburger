@@ -420,12 +420,12 @@
     <integer name="config_extraFreeKbytesAbsolute">40960</integer>
 
     <!-- Whether device has dash charging support
-    <bool name="config_hasDashCharger">true</bool> -->
+    <bool name="config_hasDashCharger">true</bool>
 
-    <!-- doze always on 
+    doze always on
     <bool name="config_enableDozeAlwaysOn">true</bool>
 
-    <!-- Whether notify fingerprint client of successful cancelled authentication
+    Whether notify fingerprint client of successful cancelled authentication
     <bool name="config_notifyClientOnFingerprintCancelSuccess">true</bool> -->
 
 </resources>
