@@ -253,28 +253,5 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 # Enable workaround for slow rom flash
 BOARD_SUPPRESS_SECURE_ERASE := true
 
-# TWRP
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_USERIMAGES_USE_EXT4 := true
-RECOVERY_SDCARD_ON_DATA := true
-BOARD_HAS_NO_REAL_SDCARD := true
-TW_CUSTOM_POWER_BUTTON := 116
-TW_INPUT_BLACKLIST := "hbtp_vm"
-TARGET_SCREEN_WIDTH := 1080
-TARGET_SCREEN_HEIGHT := 1920
-TW_INCLUDE_NTFS_3G := true
-TW_INCLUDE_CRYPTO := true
-TW_IGNORE_MISC_WIPE_DATA := true
-TARGET_RECOVERY_QCOM_RTC_FIX := true
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-TW_EXTRA_LANGUAGES := true
-TW_DEFAULT_BRIGHTNESS := 240
-TW_EXCLUDE_SUPERSU := true
-TW_INCLUDE_FB2PNG := true
-TW_NEW_ION_HEAP := true
-TW_SCREEN_BLANK_ON_BOOT := true
-TW_EXCLUDE_DEFAULT_USB_INIT := true
-
 # inherit from the proprietary version
 -include vendor/oneplus/cheeseburger/BoardConfigVendor.mk
