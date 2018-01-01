@@ -84,7 +84,7 @@ on late-fs
     start gralloc-2-0
 
     # Mount RW partitions which need run fsck
-    mount_all /vendor/etc/fstab.qcom --late
+    mount_all /fstab.qcom --late
 
 on post-fs
     chown system system /proc/ship_mode
