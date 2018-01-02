@@ -94,6 +94,7 @@ persist.debug.wfd.enable=1
 persist.sys.wfd.virtual=0
 persist.hwc.enable_vds=1
 sdm.perf_hint_window=60
+ro.panel.mountflip=3
 
 # Media
 media.stagefright.enable-player=true
