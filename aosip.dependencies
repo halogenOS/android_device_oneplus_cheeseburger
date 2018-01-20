@@ -10,11 +10,6 @@
    "target_path": "vendor/oneplus"
    },
    {
-    "remote"    : "aosip",
-    "repository": "device_qcom_common",
-    "target_path":"device/qcom/common"
-   },
-   {
     "remote"    : "devices",
     "repository": "device_oppo_common",
     "target_path": "device/oppo/common"
