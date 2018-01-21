@@ -52,6 +52,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapminfree=4m \
     dalvik.vm.heapmaxfree=8m
 
+# Doze
+PRODUCT_PACKAGES += OneplusThreeDoze
+
 # HWUI
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.texture_cache_size=96 \
