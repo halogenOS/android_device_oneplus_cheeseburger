@@ -1,0 +1,14 @@
+[
+  {
+    "repository": "android_device_oneplus_msm8998-common",
+    "target_path": "device/oneplus/msm8998-common",
+    "branch": "XOS-8.1",
+    "remote:": "XOS"
+  },
+  {
+    "repository": "android_vendor_oneplus_cheeseburger",
+    "target_path": "vendor/oneplus/cheeseburger",
+    "branch": "XOS-8.1",
+    "remote": "XOS"
+  }
+]
