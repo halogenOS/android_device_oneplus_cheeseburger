@@ -6,7 +6,7 @@
   },
   {
    "remote"     : "devices",
-   "repository" : "vendor_oneplus_cheeseburger",
+   "repository" : "vendor_oneplus",
    "target_path": "vendor/oneplus"
    },
    {
