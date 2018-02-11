@@ -1,0 +1,37 @@
+[
+  {
+    "repository": "android_device_oneplus_msm8998-common",
+    "target_path": "device/oneplus/msm8998-common",
+    "branch": "XOS-8.1"
+  },
+  {
+    "repository": "android_device_oppo_common",
+    "target_path": "device/oppo/common",
+    "branch": "XOS-8.1"
+  },
+  {
+    "repository": "android_vendor_oneplus_cheeseburger",
+    "target_path": "vendor/oneplus/cheeseburger",
+    "branch": "XOS-8.1"
+  },
+  {
+    "repository": "android_kernel_oneplus_msm8998",
+    "target_path": "kernel/oneplus/msm8998",
+    "branch": "XOS-8.1"
+  },
+  {
+    "repository": "android_external_ant-wireless_ant_native",
+    "target_path": "external/ant-wireless/ant_native",
+    "branch": "XOS-8.1"
+  },
+  {
+    "repository": "android_external_ant-wireless_ant_service",
+    "target_path": "external/ant-wireless/ant_service",
+    "branch": "XOS-8.1"
+  },
+  {
+    "repository": "android_external_ant-wireless_antradio-library",
+    "target_path": "external/ant-wireless/antradio-library",
+    "branch": "XOS-8.1"
+  }
+]
