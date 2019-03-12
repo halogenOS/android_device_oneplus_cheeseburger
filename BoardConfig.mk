@@ -34,5 +34,9 @@ TARGET_OTA_ASSERT_DEVICE := cheeseburger,OnePlus5,oneplus5
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
 
+#KeyDisabler
+JAVA_SOURCE_OVERLAYS := \
+    org.pixelexperience.keydisabler|$(DEVICE_PATH)/keydisabler|**/*.java
+
 # inherit from the proprietary version
 -include vendor/oneplus/cheeseburger/BoardConfigVendor.mk
