@@ -1,5 +1,6 @@
 #
 # Copyright (C) 2017 The LineageOS Open Source Project
+# Copyright (C) 2019 The halogenOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,6 +15,11 @@
 # limitations under the License.
 #
 
+# https://github.com/halogenOS/android_build_make/commit/7287944a6f75552089ba244048035fa514a8bbc0
+# https://github.com/halogenOS/android_build_make/commit/0c4bb28797d4fc7af1187f30c60f3a5f7033a89c
+# https://github.com/halogenOS/android_build_make/commit/49385c4ccc622bec569a872dec0775ae6e30ccd6
+CUSTOM_VENDOR_DIR := vendor/aosip
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
@@ -22,7 +28,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/oneplus/cheeseburger/device.mk)
 
 # Inherit some common AOSiP stuff.
-$(call inherit-product, vendor/aosip/config/common_full_phone.mk)
+$(call inherit-product, $(CUSTOM_VENDOR_DIR)/config/common_full_phone.mk)
 
 PRODUCT_NAME := aosip_cheeseburger
 PRODUCT_DEVICE := cheeseburger

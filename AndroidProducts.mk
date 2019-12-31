@@ -21,4 +21,7 @@ PRODUCT_MAKEFILES := \
 COMMON_LUNCH_CHOICES := \
     aosp_cheeseburger-user \
     aosp_cheeseburger-userdebug \
-    aosp_cheeseburger-eng
+    aosp_cheeseburger-eng \
+    aosip_cheeseburger-user \
+    aosip_cheeseburger-userdebug \
+    aosip_cheeseburger-eng
