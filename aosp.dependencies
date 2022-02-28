@@ -4,7 +4,7 @@
     "target_path": "device/oneplus/msm8998-common"
   },
   {
-    "repository": "android_device_oneplus_cheeseburger",
+    "repository": "android_vendor_oneplus_cheeseburger",
     "target_path": "vendor/oneplus/cheeseburger"
   }
 ]
